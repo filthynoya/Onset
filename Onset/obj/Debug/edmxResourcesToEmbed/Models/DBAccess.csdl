@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ONSETDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="ADMIN_ID" />
+    </Key>
+    <Property Name="ADMIN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ADMIN_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ADMIN_EMAIL" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ADMIN_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHATMESSAGE">
+    <Key>
+      <PropertyRef Name="CHATMESSAGE_ID" />
+    </Key>
+    <Property Name="CHATMESSAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROOM_ID" Type="Int32" Nullable="false" />
+    <Property Name="USER_ID" Type="Int32" Nullable="false" />
+    <Property Name="MESSAGE" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ROOM" Relationship="Self.FK__CHATMESSA__ROOM___6B24EA82" FromRole="CHATMESSAGES" ToRole="ROOMS" />
+    <NavigationProperty Name="USER" Relationship="Self.FK__CHATMESSA__USER___6C190EBB" FromRole="CHATMESSAGES" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="CHATROOM">
+    <Key>
+      <PropertyRef Name="CHATROOM_ID" />
+    </Key>
+    <Property Name="CHATROOM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROOM_ID" Type="Int32" Nullable="false" />
+    <Property Name="USER_ID" Type="Int32" Nullable="false" />
+    <Property Name="ISREAD" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ROOM" Relationship="Self.FK__CHATROOMS__ROOM___656C112C" FromRole="CHATROOMS" ToRole="ROOMS" />
+    <NavigationProperty Name="USER" Relationship="Self.FK__CHATROOMS__USER___66603565" FromRole="CHATROOMS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EMPLOYEE_FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMPLOYEE_LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMPLOYEE_EMAIL" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMPLOYEE_DESIGNATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMPLOYEE_ORGANIZATION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMPLOYEE_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMPLOYEE_GENDER" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMPLOYEE_DATEOFBIRTH" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EMPLOYEE_LOCATION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMPLOYEE_REGISTRATIONDATE" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="PROGRESSEMPLOYEES" Relationship="Self.FK__PROGRESSE__EMPLO__4F7CD00D" FromRole="EMPLOYEES" ToRole="PROGRESSEMPLOYEES" />
+    <NavigationProperty Name="TASKEMPLOYEES" Relationship="Self.FK__TASKEMPLO__EMPLO__3F466844" FromRole="EMPLOYEES" ToRole="TASKEMPLOYEES" />
+  </EntityType>
+  <EntityType Name="EVENT">
+    <Key>
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Name="EVENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EVENT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EVENT_CATEGORY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EVENT_DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EVENT_DEADLINE" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="EVENTUSERS" Relationship="Self.FK__EVENTUSER__EVENT__59063A47" FromRole="EVENTS" ToRole="EVENTUSERS" />
+  </EntityType>
+  <EntityType Name="EVENTUSER">
+    <Key>
+      <PropertyRef Name="EVENTUSER_ID" />
+    </Key>
+    <Property Name="EVENTUSER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EVENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="USER_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EVENT" Relationship="Self.FK__EVENTUSER__EVENT__59063A47" FromRole="EVENTUSERS" ToRole="EVENTS" />
+    <NavigationProperty Name="USER" Relationship="Self.FK__EVENTUSER__USER___59FA5E80" FromRole="EVENTUSERS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="MANAGER">
+    <Key>
+      <PropertyRef Name="MANAGER_ID" />
+    </Key>
+    <Property Name="MANAGER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MANAGER_FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANAGER_LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANAGER_EMAIL" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANAGER_DESIGNATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANAGER_ORGANIZATION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANAGER_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANAGER_GENDER" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANAGER_DATEOFBIRTH" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MANAGER_LOCATION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANAGER_REGISTRATIONDATE" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="TASKMANAGERS" Relationship="Self.FK__TASKMANAG__MANAG__398D8EEE" FromRole="MANAGERS" ToRole="TASKMANAGERS" />
+  </EntityType>
+  <EntityType Name="PROGRESSEMPLOYEE">
+    <Key>
+      <PropertyRef Name="PROGRESSEMPLOYEE_ID" />
+    </Key>
+    <Property Name="PROGRESSEMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROGRESS_ID" Type="Int32" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__PROGRESSE__EMPLO__4F7CD00D" FromRole="PROGRESSEMPLOYEES" ToRole="EMPLOYEES" />
+    <NavigationProperty Name="PROGRESS" Relationship="Self.FK__PROGRESSE__PROGR__4E88ABD4" FromRole="PROGRESSEMPLOYEES" ToRole="PROGRESSES" />
+  </EntityType>
+  <EntityType Name="PROGRESS">
+    <Key>
+      <PropertyRef Name="PROGRESS_ID" />
+    </Key>
+    <Property Name="PROGRESS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROGRESS_DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PROGRESS_PERCENTAGE" Type="Single" Nullable="false" />
+    <NavigationProperty Name="PROGRESSEMPLOYEES" Relationship="Self.FK__PROGRESSE__PROGR__4E88ABD4" FromRole="PROGRESSES" ToRole="PROGRESSEMPLOYEES" />
+    <NavigationProperty Name="PROGRESSFILES" Relationship="Self.FK__PROGRESSF__PROGR__5441852A" FromRole="PROGRESSES" ToRole="PROGRESSFILES" />
+    <NavigationProperty Name="TASKPROGRESSES" Relationship="Self.FK__TASKPROGR__PROGR__49C3F6B7" FromRole="PROGRESSES" ToRole="TASKPROGRESSES" />
+  </EntityType>
+  <EntityType Name="PROGRESSFILE">
+    <Key>
+      <PropertyRef Name="PROGRESSFILE_ID" />
+    </Key>
+    <Property Name="PROGRESSFILE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROGRESS_ID" Type="Int32" Nullable="false" />
+    <Property Name="FILES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PROGRESS" Relationship="Self.FK__PROGRESSF__PROGR__5441852A" FromRole="PROGRESSFILES" ToRole="PROGRESSES" />
+  </EntityType>
+  <EntityType Name="REPORT">
+    <Key>
+      <PropertyRef Name="REPORT_ID" />
+    </Key>
+    <Property Name="REPORT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REPORT_BODY" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="REPORTUSERS" Relationship="Self.FK__REPORTUSE__REPOR__5EBF139D" FromRole="REPORTS" ToRole="REPORTUSERS" />
+  </EntityType>
+  <EntityType Name="REPORTUSER">
+    <Key>
+      <PropertyRef Name="REPORTUSER_ID" />
+    </Key>
+    <Property Name="REPORTUSER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REPORT_ID" Type="Int32" Nullable="false" />
+    <Property Name="USER_ID_BY" Type="Int32" Nullable="false" />
+    <Property Name="USER_ID_FOR" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="REPORT" Relationship="Self.FK__REPORTUSE__REPOR__5EBF139D" FromRole="REPORTUSERS" ToRole="REPORTS" />
+    <NavigationProperty Name="USER" Relationship="Self.FK__REPORTUSE__USER___5FB337D6" FromRole="REPORTUSERS" ToRole="USERS" />
+    <NavigationProperty Name="USER1" Relationship="Self.FK__REPORTUSE__USER___60A75C0F" FromRole="REPORTUSERS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="ROOM_ID" />
+    </Key>
+    <Property Name="ROOM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROOM_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CHATMESSAGES" Relationship="Self.FK__CHATMESSA__ROOM___6B24EA82" FromRole="ROOMS" ToRole="CHATMESSAGES" />
+    <NavigationProperty Name="CHATROOMS" Relationship="Self.FK__CHATROOMS__ROOM___656C112C" FromRole="ROOMS" ToRole="CHATROOMS" />
+  </EntityType>
+  <EntityType Name="TASKEMPLOYEE">
+    <Key>
+      <PropertyRef Name="TASKEMPLOYEE_ID" />
+    </Key>
+    <Property Name="TASKEMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TASK_ID" Type="Int32" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__TASKEMPLO__EMPLO__3F466844" FromRole="TASKEMPLOYEES" ToRole="EMPLOYEES" />
+    <NavigationProperty Name="TASK" Relationship="Self.FK__TASKEMPLO__TASK___3E52440B" FromRole="TASKEMPLOYEES" ToRole="TASKS" />
+  </EntityType>
+  <EntityType Name="TASKFILE">
+    <Key>
+      <PropertyRef Name="TASKFILE_ID" />
+    </Key>
+    <Property Name="TASKFILE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TASK_ID" Type="Int32" Nullable="false" />
+    <Property Name="FILES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TASK" Relationship="Self.FK__TASKFILES__TASK___440B1D61" FromRole="TASKFILES" ToRole="TASKS" />
+  </EntityType>
+  <EntityType Name="TASKMANAGER">
+    <Key>
+      <PropertyRef Name="TASKMANAGER_ID" />
+    </Key>
+    <Property Name="TASKMANAGER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TASK_ID" Type="Int32" Nullable="false" />
+    <Property Name="MANAGER_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MANAGER" Relationship="Self.FK__TASKMANAG__MANAG__398D8EEE" FromRole="TASKMANAGERS" ToRole="MANAGERS" />
+    <NavigationProperty Name="TASK" Relationship="Self.FK__TASKMANAG__TASK___38996AB5" FromRole="TASKMANAGERS" ToRole="TASKS" />
+  </EntityType>
+  <EntityType Name="TASKPROGRESS">
+    <Key>
+      <PropertyRef Name="TASKPROGRESS_ID" />
+    </Key>
+    <Property Name="TASKPROGRESS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TASK_ID" Type="Int32" Nullable="false" />
+    <Property Name="PROGRESS_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PROGRESS" Relationship="Self.FK__TASKPROGR__PROGR__49C3F6B7" FromRole="TASKPROGRESSES" ToRole="PROGRESSES" />
+    <NavigationProperty Name="TASK" Relationship="Self.FK__TASKPROGR__TASK___48CFD27E" FromRole="TASKPROGRESSES" ToRole="TASKS" />
+  </EntityType>
+  <EntityType Name="TASK">
+    <Key>
+      <PropertyRef Name="TASK_ID" />
+    </Key>
+    <Property Name="TASK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TASK_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TASK_CATEGORY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TASK_DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TASK_DEADLINE" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TASKEMPLOYEES" Relationship="Self.FK__TASKEMPLO__TASK___3E52440B" FromRole="TASKS" ToRole="TASKEMPLOYEES" />
+    <NavigationProperty Name="TASKFILES" Relationship="Self.FK__TASKFILES__TASK___440B1D61" FromRole="TASKS" ToRole="TASKFILES" />
+    <NavigationProperty Name="TASKMANAGERS" Relationship="Self.FK__TASKMANAG__TASK___38996AB5" FromRole="TASKS" ToRole="TASKMANAGERS" />
+    <NavigationProperty Name="TASKPROGRESSES" Relationship="Self.FK__TASKPROGR__TASK___48CFD27E" FromRole="TASKS" ToRole="TASKPROGRESSES" />
+  </EntityType>
+  <EntityType Name="USERBIO">
+    <Key>
+      <PropertyRef Name="USERBIO_ID" />
+    </Key>
+    <Property Name="USERBIO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_ID" Type="Int32" Nullable="false" />
+    <Property Name="USER_BIO" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="USER" Relationship="Self.FK__USERBIOS__USER_I__2F10007B" FromRole="USERBIOS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="USERPIC">
+    <Key>
+      <PropertyRef Name="USERPIC_ID" />
+    </Key>
+    <Property Name="USERPIC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_ID" Type="Int32" Nullable="false" />
+    <Property Name="USER_PIC" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="USER" Relationship="Self.FK__USERPICS__USER_I__33D4B598" FromRole="USERPICS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_EMAIL" Type="String" MaxLength="350" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="USER_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CHATMESSAGES" Relationship="Self.FK__CHATMESSA__USER___6C190EBB" FromRole="USERS" ToRole="CHATMESSAGES" />
+    <NavigationProperty Name="CHATROOMS" Relationship="Self.FK__CHATROOMS__USER___66603565" FromRole="USERS" ToRole="CHATROOMS" />
+    <NavigationProperty Name="EVENTUSERS" Relationship="Self.FK__EVENTUSER__USER___59FA5E80" FromRole="USERS" ToRole="EVENTUSERS" />
+    <NavigationProperty Name="REPORTUSERS" Relationship="Self.FK__REPORTUSE__USER___5FB337D6" FromRole="USERS" ToRole="REPORTUSERS" />
+    <NavigationProperty Name="REPORTUSERS1" Relationship="Self.FK__REPORTUSE__USER___60A75C0F" FromRole="USERS" ToRole="REPORTUSERS" />
+    <NavigationProperty Name="USERBIOS" Relationship="Self.FK__USERBIOS__USER_I__2F10007B" FromRole="USERS" ToRole="USERBIOS" />
+    <NavigationProperty Name="USERPICS" Relationship="Self.FK__USERPICS__USER_I__33D4B598" FromRole="USERS" ToRole="USERPICS" />
+  </EntityType>
+  <Association Name="FK__CHATMESSA__ROOM___6B24EA82">
+    <End Role="ROOMS" Type="Self.ROOM" Multiplicity="1" />
+    <End Role="CHATMESSAGES" Type="Self.CHATMESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOMS">
+        <PropertyRef Name="ROOM_ID" />
+      </Principal>
+      <Dependent Role="CHATMESSAGES">
+        <PropertyRef Name="ROOM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHATMESSA__USER___6C190EBB">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="CHATMESSAGES" Type="Self.CHATMESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="CHATMESSAGES">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHATROOMS__ROOM___656C112C">
+    <End Role="ROOMS" Type="Self.ROOM" Multiplicity="1" />
+    <End Role="CHATROOMS" Type="Self.CHATROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOMS">
+        <PropertyRef Name="ROOM_ID" />
+      </Principal>
+      <Dependent Role="CHATROOMS">
+        <PropertyRef Name="ROOM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHATROOMS__USER___66603565">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="CHATROOMS" Type="Self.CHATROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="CHATROOMS">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PROGRESSE__EMPLO__4F7CD00D">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="PROGRESSEMPLOYEES" Type="Self.PROGRESSEMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="PROGRESSEMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASKEMPLO__EMPLO__3F466844">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="TASKEMPLOYEES" Type="Self.TASKEMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="TASKEMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EVENTUSER__EVENT__59063A47">
+    <End Role="EVENTS" Type="Self.EVENT" Multiplicity="1" />
+    <End Role="EVENTUSERS" Type="Self.EVENTUSER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EVENTS">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="EVENTUSERS">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EVENTUSER__USER___59FA5E80">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="EVENTUSERS" Type="Self.EVENTUSER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="EVENTUSERS">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASKMANAG__MANAG__398D8EEE">
+    <End Role="MANAGERS" Type="Self.MANAGER" Multiplicity="1" />
+    <End Role="TASKMANAGERS" Type="Self.TASKMANAGER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MANAGERS">
+        <PropertyRef Name="MANAGER_ID" />
+      </Principal>
+      <Dependent Role="TASKMANAGERS">
+        <PropertyRef Name="MANAGER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PROGRESSE__PROGR__4E88ABD4">
+    <End Role="PROGRESSES" Type="Self.PROGRESS" Multiplicity="1" />
+    <End Role="PROGRESSEMPLOYEES" Type="Self.PROGRESSEMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRESSES">
+        <PropertyRef Name="PROGRESS_ID" />
+      </Principal>
+      <Dependent Role="PROGRESSEMPLOYEES">
+        <PropertyRef Name="PROGRESS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PROGRESSF__PROGR__5441852A">
+    <End Role="PROGRESSES" Type="Self.PROGRESS" Multiplicity="1" />
+    <End Role="PROGRESSFILES" Type="Self.PROGRESSFILE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRESSES">
+        <PropertyRef Name="PROGRESS_ID" />
+      </Principal>
+      <Dependent Role="PROGRESSFILES">
+        <PropertyRef Name="PROGRESS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASKPROGR__PROGR__49C3F6B7">
+    <End Role="PROGRESSES" Type="Self.PROGRESS" Multiplicity="1" />
+    <End Role="TASKPROGRESSES" Type="Self.TASKPROGRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRESSES">
+        <PropertyRef Name="PROGRESS_ID" />
+      </Principal>
+      <Dependent Role="TASKPROGRESSES">
+        <PropertyRef Name="PROGRESS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REPORTUSE__REPOR__5EBF139D">
+    <End Role="REPORTS" Type="Self.REPORT" Multiplicity="1" />
+    <End Role="REPORTUSERS" Type="Self.REPORTUSER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REPORTS">
+        <PropertyRef Name="REPORT_ID" />
+      </Principal>
+      <Dependent Role="REPORTUSERS">
+        <PropertyRef Name="REPORT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REPORTUSE__USER___5FB337D6">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="REPORTUSERS" Type="Self.REPORTUSER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="REPORTUSERS">
+        <PropertyRef Name="USER_ID_BY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REPORTUSE__USER___60A75C0F">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="REPORTUSERS" Type="Self.REPORTUSER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="REPORTUSERS">
+        <PropertyRef Name="USER_ID_FOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASKEMPLO__TASK___3E52440B">
+    <End Role="TASKS" Type="Self.TASK" Multiplicity="1" />
+    <End Role="TASKEMPLOYEES" Type="Self.TASKEMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASKS">
+        <PropertyRef Name="TASK_ID" />
+      </Principal>
+      <Dependent Role="TASKEMPLOYEES">
+        <PropertyRef Name="TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASKFILES__TASK___440B1D61">
+    <End Role="TASKS" Type="Self.TASK" Multiplicity="1" />
+    <End Role="TASKFILES" Type="Self.TASKFILE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASKS">
+        <PropertyRef Name="TASK_ID" />
+      </Principal>
+      <Dependent Role="TASKFILES">
+        <PropertyRef Name="TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASKMANAG__TASK___38996AB5">
+    <End Role="TASKS" Type="Self.TASK" Multiplicity="1" />
+    <End Role="TASKMANAGERS" Type="Self.TASKMANAGER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASKS">
+        <PropertyRef Name="TASK_ID" />
+      </Principal>
+      <Dependent Role="TASKMANAGERS">
+        <PropertyRef Name="TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASKPROGR__TASK___48CFD27E">
+    <End Role="TASKS" Type="Self.TASK" Multiplicity="1" />
+    <End Role="TASKPROGRESSES" Type="Self.TASKPROGRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASKS">
+        <PropertyRef Name="TASK_ID" />
+      </Principal>
+      <Dependent Role="TASKPROGRESSES">
+        <PropertyRef Name="TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERBIOS__USER_I__2F10007B">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="USERBIOS" Type="Self.USERBIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="USERBIOS">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERPICS__USER_I__33D4B598">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="USERPICS" Type="Self.USERPIC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="USERPICS">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ONSETDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADMINS" EntityType="Self.ADMIN" />
+    <EntitySet Name="CHATMESSAGES" EntityType="Self.CHATMESSAGE" />
+    <EntitySet Name="CHATROOMS" EntityType="Self.CHATROOM" />
+    <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEE" />
+    <EntitySet Name="EVENTS" EntityType="Self.EVENT" />
+    <EntitySet Name="EVENTUSERS" EntityType="Self.EVENTUSER" />
+    <EntitySet Name="MANAGERS" EntityType="Self.MANAGER" />
+    <EntitySet Name="PROGRESSEMPLOYEES" EntityType="Self.PROGRESSEMPLOYEE" />
+    <EntitySet Name="PROGRESSES" EntityType="Self.PROGRESS" />
+    <EntitySet Name="PROGRESSFILES" EntityType="Self.PROGRESSFILE" />
+    <EntitySet Name="REPORTS" EntityType="Self.REPORT" />
+    <EntitySet Name="REPORTUSERS" EntityType="Self.REPORTUSER" />
+    <EntitySet Name="ROOMS" EntityType="Self.ROOM" />
+    <EntitySet Name="TASKEMPLOYEES" EntityType="Self.TASKEMPLOYEE" />
+    <EntitySet Name="TASKFILES" EntityType="Self.TASKFILE" />
+    <EntitySet Name="TASKMANAGERS" EntityType="Self.TASKMANAGER" />
+    <EntitySet Name="TASKPROGRESSES" EntityType="Self.TASKPROGRESS" />
+    <EntitySet Name="TASKS" EntityType="Self.TASK" />
+    <EntitySet Name="USERBIOS" EntityType="Self.USERBIO" />
+    <EntitySet Name="USERPICS" EntityType="Self.USERPIC" />
+    <EntitySet Name="USERS" EntityType="Self.USER" />
+    <AssociationSet Name="FK__CHATMESSA__ROOM___6B24EA82" Association="Self.FK__CHATMESSA__ROOM___6B24EA82">
+      <End Role="ROOMS" EntitySet="ROOMS" />
+      <End Role="CHATMESSAGES" EntitySet="CHATMESSAGES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHATMESSA__USER___6C190EBB" Association="Self.FK__CHATMESSA__USER___6C190EBB">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="CHATMESSAGES" EntitySet="CHATMESSAGES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHATROOMS__ROOM___656C112C" Association="Self.FK__CHATROOMS__ROOM___656C112C">
+      <End Role="ROOMS" EntitySet="ROOMS" />
+      <End Role="CHATROOMS" EntitySet="CHATROOMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHATROOMS__USER___66603565" Association="Self.FK__CHATROOMS__USER___66603565">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="CHATROOMS" EntitySet="CHATROOMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PROGRESSE__EMPLO__4F7CD00D" Association="Self.FK__PROGRESSE__EMPLO__4F7CD00D">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="PROGRESSEMPLOYEES" EntitySet="PROGRESSEMPLOYEES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASKEMPLO__EMPLO__3F466844" Association="Self.FK__TASKEMPLO__EMPLO__3F466844">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="TASKEMPLOYEES" EntitySet="TASKEMPLOYEES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EVENTUSER__EVENT__59063A47" Association="Self.FK__EVENTUSER__EVENT__59063A47">
+      <End Role="EVENTS" EntitySet="EVENTS" />
+      <End Role="EVENTUSERS" EntitySet="EVENTUSERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EVENTUSER__USER___59FA5E80" Association="Self.FK__EVENTUSER__USER___59FA5E80">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="EVENTUSERS" EntitySet="EVENTUSERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASKMANAG__MANAG__398D8EEE" Association="Self.FK__TASKMANAG__MANAG__398D8EEE">
+      <End Role="MANAGERS" EntitySet="MANAGERS" />
+      <End Role="TASKMANAGERS" EntitySet="TASKMANAGERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PROGRESSE__PROGR__4E88ABD4" Association="Self.FK__PROGRESSE__PROGR__4E88ABD4">
+      <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+      <End Role="PROGRESSEMPLOYEES" EntitySet="PROGRESSEMPLOYEES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PROGRESSF__PROGR__5441852A" Association="Self.FK__PROGRESSF__PROGR__5441852A">
+      <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+      <End Role="PROGRESSFILES" EntitySet="PROGRESSFILES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASKPROGR__PROGR__49C3F6B7" Association="Self.FK__TASKPROGR__PROGR__49C3F6B7">
+      <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+      <End Role="TASKPROGRESSES" EntitySet="TASKPROGRESSES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REPORTUSE__REPOR__5EBF139D" Association="Self.FK__REPORTUSE__REPOR__5EBF139D">
+      <End Role="REPORTS" EntitySet="REPORTS" />
+      <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REPORTUSE__USER___5FB337D6" Association="Self.FK__REPORTUSE__USER___5FB337D6">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REPORTUSE__USER___60A75C0F" Association="Self.FK__REPORTUSE__USER___60A75C0F">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASKEMPLO__TASK___3E52440B" Association="Self.FK__TASKEMPLO__TASK___3E52440B">
+      <End Role="TASKS" EntitySet="TASKS" />
+      <End Role="TASKEMPLOYEES" EntitySet="TASKEMPLOYEES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASKFILES__TASK___440B1D61" Association="Self.FK__TASKFILES__TASK___440B1D61">
+      <End Role="TASKS" EntitySet="TASKS" />
+      <End Role="TASKFILES" EntitySet="TASKFILES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASKMANAG__TASK___38996AB5" Association="Self.FK__TASKMANAG__TASK___38996AB5">
+      <End Role="TASKS" EntitySet="TASKS" />
+      <End Role="TASKMANAGERS" EntitySet="TASKMANAGERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASKPROGR__TASK___48CFD27E" Association="Self.FK__TASKPROGR__TASK___48CFD27E">
+      <End Role="TASKS" EntitySet="TASKS" />
+      <End Role="TASKPROGRESSES" EntitySet="TASKPROGRESSES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERBIOS__USER_I__2F10007B" Association="Self.FK__USERBIOS__USER_I__2F10007B">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USERBIOS" EntitySet="USERBIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERPICS__USER_I__33D4B598" Association="Self.FK__USERPICS__USER_I__33D4B598">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USERPICS" EntitySet="USERPICS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,454 @@
+﻿@model Onset.Models.DashboardModel.IndexModel
+
+@{
+    Layout = null;
+    bool is_manager = Model.USERTYPE == "Manager";
+    string pic = "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp";
+
+    if (Model.PROFILEPIC != null) {
+        pic = Model.PROFILEPIC;
+    }
+
+    var list_size = Model.TASKS.Count;
+
+    if (list_size > 5)
+    {
+        list_size = 5;
+    }
+
+    var name = "Pain";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+          rel="stylesheet" />
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+             class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3 bg-light">
+            <nav class="navbar bg-light ">
+                <a href="/Dashboard/Index/" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary">
+                        <i class="fa fa-user-edit me-2"></i>OnSet
+                    </h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle"
+                             src="@pic" alt="avatar 1"
+                             style="width: 40px; height: 40px" />
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">@Model.NAME</h6>
+                        <span>@Model.USERTYPE</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="/Dashboard/Index" class="nav-item nav-link active"><i class="fa fa-laptop me-2"></i>Dashboard</a>
+                    <a href="/Dashboard/ViewTable" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
+                    <a href="/Dashboard/Rooms" class="nav-item nav-link"><i class="fa fa-bell me-2"></i>Message</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notification</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a class="notification-a">
+                                <h6 class="fw-normal mb-0">Task</h6>
+                                @{
+                                    for (int i = 0; i < Model.DASHINFO.TASKS.Count && i < 2; i++)
+                                    {
+                                        <small>@Model.DASHINFO.TASKS[i].TASK_NAME</small><br />
+                                        <small style="font-size:12px">@Model.DASHINFO.TASKS[i].TASK_CATEGORY</small><br />
+                                    }
+                                }
+                            </a>
+                            <hr class="dropdown-divider" />
+                            <a class="notification-a">
+                                <h6 class="fw-normal mb-0">Event</h6>
+                                @{
+                                    for (int i = 0; i < Model.DASHINFO.EVENTS.Count && i < 2; i++)
+                                    {
+                                        <small>@Model.DASHINFO.EVENTS[i].EVENT_NAME</small><br />
+                                        <small style="font-size:12px">@Model.DASHINFO.EVENTS[i].EVENT_CATEGORY</small><br />
+                                    }
+                                }
+                            </a>
+
+                            <hr class="dropdown-divider" />
+                            <a href="/Dashboard/Notification/" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2"
+                                 src="@pic" alt="avatar 1"
+                                 style="width: 40px; height: 40px" />
+                            <span class="d-none d-lg-inline-flex">@Model.NAME</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            @Html.ActionLink("My Profile", "ViewProfile", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Log Out", "Logout", "Auth", null, new { @class = "dropdown-item" })
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+            <!-- progress -->
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-table text-center rounded p-4">
+                    <div class="header d-flex align-items-center justify-content-between mb-4">
+                        @{
+                            @Html.ActionLink("Add Event", "AddEvent")
+                            if (is_manager)
+                            {
+                                @Html.ActionLink("Add Task", "AddTask")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Upload Task", "UploadTask")
+                                @Html.ActionLink("Add Progress", "AddProgress")
+                            }
+                        }
+                        <a href="">Show All</a>
+                    </div>
+
+                    <table class="table text-start align-middle table-hover mb-0">
+                        <thead>
+                            <tr class="text-white">
+                                <th scope="col">Team Member</th>
+                                <th scope="col">Task</th>
+                                <th scope="col">Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < list_size; i++)
+                            {
+                                <tr class="fw-normal">
+                                    <th>
+                                        <img src="@Model.PROPICS[i]"
+                                             alt="avatar 1" style="width: 45px; height: auto" class="rounded-circle" />
+                                        <span class="ms-2">
+                                            @{
+                                                if (is_manager)
+                                                {
+                                                    name = Model.EMPS[i].EMPLOYEE_FIRSTNAME + " " + Model.EMPS[i].EMPLOYEE_LASTNAME;
+                                                }
+                                                else
+                                                {
+                                                    name = Model.MANS[i].MANAGER_FIRSTNAME + " " + Model.MANS[i].MANAGER_LASTNAME;
+                                                }
+                                            }
+
+                                            <a href="/Dashboard/ViewProfile/@Model.USERIDS[i]">@name</a>
+                                        </span>
+                                    </th>
+                                    <td class="align-middle">
+                                        <span><a href="/Dashboard/ViewTask/@Model.TASKS[i].TASK_ID">@Model.TASKS[i].TASK_NAME</a></span>
+                                    </td>
+
+                                    <td class="align-middle text-light">
+
+                                        @{
+                                            if (Model.PERCENTS[i].ToString().Length == 1)
+                                            {
+                                                //&nbsp
+                                                <div class="float-start me-3">
+                                                    @Model.PERCENTS[i] &nbsp
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="float-start me-3">
+                                                    @Model.PERCENTS[i]
+                                                </div>
+                                            }
+                                        }
+
+                                        <div class="mt-1">
+                                            <div class="progress" style="height: 15px">
+                                                <div class="progress-bar" role="progressbar" style="width: @Model.PERCENTS[i]%" aria-valuenow="@Int32.Parse(Model.PERCENTS[i].ToString())"
+                                                     aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <!-- Widgets Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="bg-table h-100 bg-secondary rounded p-4">
+                            <div class="month">
+                                <ul>
+                                    <li>
+                                        @System.DateTime.Now.ToString("MMMM")<br>
+                                        <span style="font-size:18px">@System.DateTime.Now.Year</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <ul class="weekdays">
+                                <li>Mo</li>
+                                <li>Tu</li>
+                                <li>We</li>
+                                <li>Th</li>
+                                <li>Fr</li>
+                                <li>Sa</li>
+                                <li>Su</li>
+                            </ul>
+
+                            <ul class="days">
+                                @{
+                                    System.DateTime dt = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, 1);
+                                    bool found = false;
+                                    if (dt.DayOfWeek != DayOfWeek.Monday)
+                                    {
+                                        <li></li>
+                                    }
+                                    else
+                                    {
+                                        found = true;
+                                    }
+
+                                    if (dt.DayOfWeek != DayOfWeek.Tuesday && !found)
+                                    {
+                                        <li></li>
+                                    }
+                                    else
+                                    {
+                                        found = true;
+                                    }
+                                    if (dt.DayOfWeek != DayOfWeek.Wednesday && !found)
+                                    {
+                                        <li></li>
+                                    }
+                                    else
+                                    {
+                                        found = true;
+                                    }
+                                    if (dt.DayOfWeek != DayOfWeek.Thursday && !found)
+                                    {
+                                        <li></li>
+                                    }
+                                    else
+                                    {
+                                        found = true;
+                                    }
+                                    if (dt.DayOfWeek != DayOfWeek.Friday && !found)
+                                    {
+                                        <li></li>
+                                    }
+                                    else
+                                    {
+                                        found = true;
+                                    }
+                                    if (dt.DayOfWeek != DayOfWeek.Saturday && !found)
+                                    {
+                                        <li></li>
+                                    }
+                                    else
+                                    {
+                                        found = true;
+                                    }
+                                }
+                                @{
+                                    int indx = 0;
+                                    for (int i = 1; i <= System.DateTime.DaysInMonth(System.DateTime.Now.Year, System.DateTime.Now.Month); i++)
+                                    {
+                                        if (System.DateTime.Now.Day == i)
+                                        {
+                                            if (indx < Model.DASHINFO.EVENTS.Count &&
+                                                Model.DASHINFO.EVENTS[indx].EVENT_DEADLINE.Day == i &&
+                                                Model.DASHINFO.EVENTS[indx].EVENT_DEADLINE.Month == System.DateTime.Now.Month)
+                                            {
+                                                <li class="active-cal"><a href="/Dashboard/Calendar/@i">@i</a></li>
+                                                indx++;
+                                            }
+                                            else
+                                            {
+                                                <li class="active-cal">@i</li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (indx < Model.DASHINFO.EVENTS.Count &&
+                                                Model.DASHINFO.EVENTS[indx].EVENT_DEADLINE.Day == i &&
+                                                Model.DASHINFO.EVENTS[indx].EVENT_DEADLINE.Month == System.DateTime.Now.Month)
+                                            {
+                                                <li class="task-active"><a href="/Dashboard/Calendar/@i">@i</a></li>
+                                                indx++;
+                                            }
+                                            else
+                                            {
+                                                <li>@i</li>
+                                            }
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-6 ">
+                        <div class="bg-table h-100  rounded p-4">
+                            <div class="header d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">To Do List</h6>
+                                <a href="/Dashboard/ViewEventAll/">Show All</a>
+                            </div>
+                            <div class="d-flex mb-2 header">
+                                <input class="form-control bg-dark border-0"
+                                       type="text"
+                                       id="myInput"
+                                       placeholder="Enter task" />
+                                <span onclick="newElement()"
+                                      type="button"
+                                      class="addBtn btn btn-primary ms-2">
+                                    Add
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center py-2">
+                                <ul class="todo" id="myUL">
+                                    @for (int i = 0; i < Model.DASHINFO.TODOLIST.Count; i++)
+                                    {
+                                        <li class="myli">@Model.DASHINFO.TODOLIST[i].EVENT_NAME <span class="close"><span onclick="removeToDo(@Model.DASHINFO.TODOLIST[i].EVENT_ID)">X</span></span></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Widgets End -->
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-table rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="/Dashboard/Index/">OnSet</a>, All Right Reserved.
+                        </div>
+                        <!--<div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        <!--Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                            <br />Distributed By:
+                            <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                          </div>-->
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <script>
+        var close = document.getElementsByClassName("close");
+        var i;
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+
+        function removeToDo(id) {
+            window.open("/Dashboard/DeleteEventFromToDoList/" + id);
+        }
+
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function (ev) {
+            if (ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('checked');
+            }
+        }, false);
+
+        function newElement() {
+            var inputValue = document.getElementById("myInput").value;
+
+            window.open("/Dashboard/CreateToDoList/" + inputValue);
+
+            setTimeout(function () {
+                location.reload();
+            }, 1000);
+        }
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/chart/chart.min.js"></script>
+    <script src="~/lib/easing/easing.min.js"></script>
+    <script src="~/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/Scripts/main.js"></script>
+</body>
+
+</html>

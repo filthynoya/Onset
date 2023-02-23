@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ONSETDBModelStoreContainer" CdmEntityContainer="ONSETDBEntities">
+    <EntitySetMapping Name="ADMINS">
+      <EntityTypeMapping TypeName="ONSETDBModel.ADMIN">
+        <MappingFragment StoreEntitySet="ADMINS">
+          <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN ID" />
+          <ScalarProperty Name="ADMIN_NAME" ColumnName="ADMIN NAME" />
+          <ScalarProperty Name="ADMIN_EMAIL" ColumnName="ADMIN EMAIL" />
+          <ScalarProperty Name="ADMIN_PASSWORD" ColumnName="ADMIN PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHATMESSAGES">
+      <EntityTypeMapping TypeName="ONSETDBModel.CHATMESSAGE">
+        <MappingFragment StoreEntitySet="CHATMESSAGES">
+          <ScalarProperty Name="CHATMESSAGE_ID" ColumnName="CHATMESSAGE ID" />
+          <ScalarProperty Name="ROOM_ID" ColumnName="ROOM ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHATROOMS">
+      <EntityTypeMapping TypeName="ONSETDBModel.CHATROOM">
+        <MappingFragment StoreEntitySet="CHATROOMS">
+          <ScalarProperty Name="CHATROOM_ID" ColumnName="CHATROOM ID" />
+          <ScalarProperty Name="ROOM_ID" ColumnName="ROOM ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+          <ScalarProperty Name="ISREAD" ColumnName="ISREAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEES">
+      <EntityTypeMapping TypeName="ONSETDBModel.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEES">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+          <ScalarProperty Name="EMPLOYEE_FIRSTNAME" ColumnName="EMPLOYEE FIRSTNAME" />
+          <ScalarProperty Name="EMPLOYEE_LASTNAME" ColumnName="EMPLOYEE LASTNAME" />
+          <ScalarProperty Name="EMPLOYEE_EMAIL" ColumnName="EMPLOYEE EMAIL" />
+          <ScalarProperty Name="EMPLOYEE_DESIGNATION" ColumnName="EMPLOYEE DESIGNATION" />
+          <ScalarProperty Name="EMPLOYEE_ORGANIZATION" ColumnName="EMPLOYEE ORGANIZATION" />
+          <ScalarProperty Name="EMPLOYEE_PHONE" ColumnName="EMPLOYEE PHONE" />
+          <ScalarProperty Name="EMPLOYEE_GENDER" ColumnName="EMPLOYEE GENDER" />
+          <ScalarProperty Name="EMPLOYEE_DATEOFBIRTH" ColumnName="EMPLOYEE DATEOFBIRTH" />
+          <ScalarProperty Name="EMPLOYEE_LOCATION" ColumnName="EMPLOYEE LOCATION" />
+          <ScalarProperty Name="EMPLOYEE_REGISTRATIONDATE" ColumnName="EMPLOYEE REGISTRATIONDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EVENTS">
+      <EntityTypeMapping TypeName="ONSETDBModel.EVENT">
+        <MappingFragment StoreEntitySet="EVENTS">
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT ID" />
+          <ScalarProperty Name="EVENT_NAME" ColumnName="EVENT NAME" />
+          <ScalarProperty Name="EVENT_CATEGORY" ColumnName="EVENT CATEGORY" />
+          <ScalarProperty Name="EVENT_DESCRIPTION" ColumnName="EVENT DESCRIPTION" />
+          <ScalarProperty Name="EVENT_DEADLINE" ColumnName="EVENT DEADLINE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EVENTUSERS">
+      <EntityTypeMapping TypeName="ONSETDBModel.EVENTUSER">
+        <MappingFragment StoreEntitySet="EVENTUSERS">
+          <ScalarProperty Name="EVENTUSER_ID" ColumnName="EVENTUSER ID" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MANAGERS">
+      <EntityTypeMapping TypeName="ONSETDBModel.MANAGER">
+        <MappingFragment StoreEntitySet="MANAGERS">
+          <ScalarProperty Name="MANAGER_ID" ColumnName="MANAGER ID" />
+          <ScalarProperty Name="MANAGER_FIRSTNAME" ColumnName="MANAGER FIRSTNAME" />
+          <ScalarProperty Name="MANAGER_LASTNAME" ColumnName="MANAGER LASTNAME" />
+          <ScalarProperty Name="MANAGER_EMAIL" ColumnName="MANAGER EMAIL" />
+          <ScalarProperty Name="MANAGER_DESIGNATION" ColumnName="MANAGER DESIGNATION" />
+          <ScalarProperty Name="MANAGER_ORGANIZATION" ColumnName="MANAGER ORGANIZATION" />
+          <ScalarProperty Name="MANAGER_PHONE" ColumnName="MANAGER PHONE" />
+          <ScalarProperty Name="MANAGER_GENDER" ColumnName="MANAGER GENDER" />
+          <ScalarProperty Name="MANAGER_DATEOFBIRTH" ColumnName="MANAGER DATEOFBIRTH" />
+          <ScalarProperty Name="MANAGER_LOCATION" ColumnName="MANAGER LOCATION" />
+          <ScalarProperty Name="MANAGER_REGISTRATIONDATE" ColumnName="MANAGER REGISTRATIONDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROGRESSEMPLOYEES">
+      <EntityTypeMapping TypeName="ONSETDBModel.PROGRESSEMPLOYEE">
+        <MappingFragment StoreEntitySet="PROGRESSEMPLOYEES">
+          <ScalarProperty Name="PROGRESSEMPLOYEE_ID" ColumnName="PROGRESSEMPLOYEE ID" />
+          <ScalarProperty Name="PROGRESS_ID" ColumnName="PROGRESS ID" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROGRESSES">
+      <EntityTypeMapping TypeName="ONSETDBModel.PROGRESS">
+        <MappingFragment StoreEntitySet="PROGRESSES">
+          <ScalarProperty Name="PROGRESS_ID" ColumnName="PROGRESS ID" />
+          <ScalarProperty Name="PROGRESS_DESCRIPTION" ColumnName="PROGRESS DESCRIPTION" />
+          <ScalarProperty Name="PROGRESS_PERCENTAGE" ColumnName="PROGRESS PERCENTAGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROGRESSFILES">
+      <EntityTypeMapping TypeName="ONSETDBModel.PROGRESSFILE">
+        <MappingFragment StoreEntitySet="PROGRESSFILES">
+          <ScalarProperty Name="PROGRESSFILE_ID" ColumnName="PROGRESSFILE ID" />
+          <ScalarProperty Name="PROGRESS_ID" ColumnName="PROGRESS ID" />
+          <ScalarProperty Name="FILES" ColumnName="FILES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTS">
+      <EntityTypeMapping TypeName="ONSETDBModel.REPORT">
+        <MappingFragment StoreEntitySet="REPORTS">
+          <ScalarProperty Name="REPORT_ID" ColumnName="REPORT ID" />
+          <ScalarProperty Name="REPORT_BODY" ColumnName="REPORT BODY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTUSERS">
+      <EntityTypeMapping TypeName="ONSETDBModel.REPORTUSER">
+        <MappingFragment StoreEntitySet="REPORTUSERS">
+          <ScalarProperty Name="REPORTUSER_ID" ColumnName="REPORTUSER ID" />
+          <ScalarProperty Name="REPORT_ID" ColumnName="REPORT ID" />
+          <ScalarProperty Name="USER_ID_BY" ColumnName="USER ID BY" />
+          <ScalarProperty Name="USER_ID_FOR" ColumnName="USER ID FOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROOMS">
+      <EntityTypeMapping TypeName="ONSETDBModel.ROOM">
+        <MappingFragment StoreEntitySet="ROOMS">
+          <ScalarProperty Name="ROOM_ID" ColumnName="ROOM ID" />
+          <ScalarProperty Name="ROOM_NAME" ColumnName="ROOM NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASKEMPLOYEES">
+      <EntityTypeMapping TypeName="ONSETDBModel.TASKEMPLOYEE">
+        <MappingFragment StoreEntitySet="TASKEMPLOYEES">
+          <ScalarProperty Name="TASKEMPLOYEE_ID" ColumnName="TASKEMPLOYEE ID" />
+          <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASKFILES">
+      <EntityTypeMapping TypeName="ONSETDBModel.TASKFILE">
+        <MappingFragment StoreEntitySet="TASKFILES">
+          <ScalarProperty Name="TASKFILE_ID" ColumnName="TASKFILE ID" />
+          <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+          <ScalarProperty Name="FILES" ColumnName="FILES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASKMANAGERS">
+      <EntityTypeMapping TypeName="ONSETDBModel.TASKMANAGER">
+        <MappingFragment StoreEntitySet="TASKMANAGERS">
+          <ScalarProperty Name="TASKMANAGER_ID" ColumnName="TASKMANAGER ID" />
+          <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+          <ScalarProperty Name="MANAGER_ID" ColumnName="MANAGER ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASKPROGRESSES">
+      <EntityTypeMapping TypeName="ONSETDBModel.TASKPROGRESS">
+        <MappingFragment StoreEntitySet="TASKPROGRESSES">
+          <ScalarProperty Name="TASKPROGRESS_ID" ColumnName="TASKPROGRESS ID" />
+          <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+          <ScalarProperty Name="PROGRESS_ID" ColumnName="PROGRESS ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASKS">
+      <EntityTypeMapping TypeName="ONSETDBModel.TASK">
+        <MappingFragment StoreEntitySet="TASKS">
+          <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+          <ScalarProperty Name="TASK_NAME" ColumnName="TASK NAME" />
+          <ScalarProperty Name="TASK_CATEGORY" ColumnName="TASK CATEGORY" />
+          <ScalarProperty Name="TASK_DESCRIPTION" ColumnName="TASK DESCRIPTION" />
+          <ScalarProperty Name="TASK_DEADLINE" ColumnName="TASK DEADLINE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERBIOS">
+      <EntityTypeMapping TypeName="ONSETDBModel.USERBIO">
+        <MappingFragment StoreEntitySet="USERBIOS">
+          <ScalarProperty Name="USERBIO_ID" ColumnName="USERBIO ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+          <ScalarProperty Name="USER_BIO" ColumnName="USER BIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERPICS">
+      <EntityTypeMapping TypeName="ONSETDBModel.USERPIC">
+        <MappingFragment StoreEntitySet="USERPICS">
+          <ScalarProperty Name="USERPIC_ID" ColumnName="USERPIC ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+          <ScalarProperty Name="USER_PIC" ColumnName="USER PIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="ONSETDBModel.USER">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+          <ScalarProperty Name="USER_EMAIL" ColumnName="USER EMAIL" />
+          <ScalarProperty Name="USER_PASSWORD" ColumnName="USER PASSWORD" />
+          <ScalarProperty Name="USER_TYPE" ColumnName="USER TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

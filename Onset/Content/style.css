@@ -1,0 +1,750 @@
+/********** Template CSS **********/
+:root {
+    --primary: #151b11;
+    --secondary: #0a3f42;
+    --light: #ACD0C0;
+    --dark: #C4CDC1;
+    --pink: #6f4c6c;
+}
+
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+a {
+    color: #0a3f42;
+    text-decoration: none;
+}
+
+.notification-a {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: white;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.notification-a:hover {
+    color: white;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: darkgreen;
+}
+
+.text-primary {
+    color: #e1f6f7 !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    width: fit-content;
+    height: auto;
+}
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+    #spinner.show {
+        transition: opacity .5s ease-out, visibility 0s linear 0s;
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+
+
+/*** Button ***/
+
+.btn {
+    transition: .5s;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2e5263;
+    border-color: #23e5f3;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 50px;
+}
+
+
+/*** Layout ***/
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--secondary);
+    transition: 0.5s;
+    z-index: 999;
+}
+
+.content {
+    margin-left: 250px;
+    min-height: 100vh;
+    background: var(--dark);
+    transition: 0.5s;
+}
+
+@media (min-width: 992px) {
+    .sidebar {
+        margin-left: 0;
+    }
+
+        .sidebar.open {
+            margin-left: -250px;
+        }
+
+    .content {
+        width: calc(100% - 250px);
+    }
+
+        .content.open {
+            width: 100%;
+            margin-left: 0;
+        }
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+
+        .sidebar.open {
+            margin-left: 0;
+        }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+
+/*** Navbar ***/
+.sidebar .navbar .navbar-nav .nav-link {
+    padding: 7px 20px;
+    color: var(--secondary);
+    font-weight: 500;
+    border-left: 3px solid var(--secondary);
+    border-radius: 0 30px 30px 0;
+    outline: none;
+}
+
+.navbar span {
+    color: var(--secondary);
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover,
+.sidebar .navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+    background: var(--dark);
+    border-color: var(--primary);
+}
+
+.sidebar .navbar .navbar-nav .nav-link i {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark);
+    border-radius: 40px;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover i,
+.sidebar .navbar .navbar-nav .nav-link.active i {
+    background: var(--secondary);
+}
+
+.sidebar .navbar .dropdown-toggle::after {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    transition: .5s;
+}
+
+.sidebar .navbar .dropdown-toggle[aria-expanded=true]::after {
+    transform: rotate(-180deg);
+}
+
+.sidebar .navbar .dropdown-item {
+    padding-left: 25px;
+    border-radius: 0 30px 30px 0;
+    color: var(--secondary);
+}
+
+    .sidebar .navbar .dropdown-item:hover,
+    .sidebar .navbar .dropdown-item.active {
+        background: var(--dark);
+    }
+
+.content .navbar .navbar-nav .nav-link {
+    margin-left: 25px;
+    padding: 12px 0;
+    color: var(--secondary);
+    outline: none;
+}
+
+    .content .navbar .navbar-nav .nav-link:hover,
+    .content .navbar .navbar-nav .nav-link.active {
+        color: var(--primary);
+    }
+
+    .content .navbar .sidebar-toggler,
+    .content .navbar .navbar-nav .nav-link i {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--dark);
+        border-radius: 40px;
+    }
+
+.content .navbar .dropdown-item {
+    color: var(--light);
+}
+
+    .content .navbar .dropdown-item:hover,
+    .content .navbar .dropdown-item.active {
+        background: var(--dark);
+    }
+
+.content .navbar .dropdown-toggle::after {
+    margin-left: 6px;
+    vertical-align: middle;
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    transition: .5s;
+}
+
+.content .navbar .dropdown-toggle[aria-expanded=true]::after {
+    transform: rotate(-180deg);
+}
+
+@media (max-width: 575.98px) {
+    .content .navbar .navbar-nav .nav-link {
+        margin-left: 15px;
+    }
+}
+
+
+/*** Date Picker ***/
+.bootstrap-datetimepicker-widget.bottom {
+    top: auto !important;
+}
+
+.bootstrap-datetimepicker-widget .table * {
+    border-bottom-width: 0px;
+}
+
+.bootstrap-datetimepicker-widget .table th {
+    font-weight: 500;
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+    background: var(--primary);
+}
+
+.bootstrap-datetimepicker-widget table td.today::before {
+    border-bottom-color: var(--primary);
+}
+
+
+/*** Testimonial ***/
+.progress .progress-bar {
+    width: 0px;
+    transition: 2s;
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-dots {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border: 5px solid var(--primary);
+    border-radius: 15px;
+    transition: .5s;
+}
+
+    .testimonial-carousel .owl-dot.active {
+        background: var(--dark);
+        border-color: var(--primary);
+    }
+
+
+/*progress*/
+
+.progress-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 20px;
+}
+
+.progress {
+    height: 12px;
+    background: #10101b;
+    border-radius: 20px;
+    border: 1px solid #000;
+    box-shadow: 0 2px 2px #4f4c4c;
+    margin-bottom: 20px;
+    overflow: visible;
+    position: relative;
+}
+
+.progress-bar {
+    background-color: #52957C;
+}
+
+    .progress .progress-bar {
+        border-radius: 20px;
+        border: 1px solid #000;
+        -webkit-animation: animate-positive 2s;
+        animation: animate-positive 2s;
+    }
+
+    .progress .progress-value {
+        width: 65px;
+        height: 25px;
+        line-height: 25px;
+        background: #171b3c;
+        font-size: 15px;
+        color: #fff;
+        border-radius: 0 0 15px 15px;
+        border: 1px solid #000;
+        border-top: none;
+        box-shadow: 0 2px 2px #4f4c4c;
+        position: absolute;
+        bottom: -25px;
+        right: 60px;
+    }
+
+@-webkit-keyframes animate-positive {
+    0% {
+        width: 0;
+    }
+}
+
+@keyframes animate-positive {
+    0% {
+        width: 0;
+    }
+}
+
+.gradient-custom {
+    background: rgb(2,0,36);
+    background: linear-gradient(166deg, rgba(2,0,36,1) 0%, rgba(25,115,102,0.9052871148459384) 42%, rgba(37,179,208,0.8156512605042017) 92%);
+}
+
+label {
+    display: inline-block;
+    color: black;
+    font-weight: 600;
+}
+
+/*categry*/
+.select2-container .select2-selection--single {
+    height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border: 1px solid rgb(135, 63, 63) !important;
+    border-radius: 0px !important;
+}
+
+.form-floating > label {
+    position: absolute;
+    top: 0;
+    left: 11px;
+    height: 100%;
+    padding: 1rem .75rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity 0.1s ease-in-out,transform 0.1s ease-in-out;
+}
+
+.form-floating > .form-select {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+/* Style the list items */
+.todo ul {
+    margin: 0;
+    padding: 0;
+}
+
+    .todo ul li {
+        cursor: pointer;
+        position: relative;
+        padding: 12px 8px 12px 40px;
+        background: #eee;
+        font-size: 18px;
+        transition: 0.2s;
+        /* make the list items unselectable */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Set all odd list items to a different color (zebra-stripes) */
+        .todo ul li:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        /* Darker background-color on hover */
+        .todo ul li:hover {
+            background: #ddd;
+        }
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+    background: rgb(132, 16, 16);
+    color: #fff;
+    text-decoration: line-through;
+}
+
+    /* Add a "checked" mark when clicked on */
+    ul li.checked::before {
+        content: '';
+        position: absolute;
+        border-color: #fff;
+        border-style: solid;
+        border-width: 0 2px 2px 0;
+        top: 10px;
+        left: 16px;
+        transform: rotate(45deg);
+        height: 15px;
+        width: 7px;
+    }
+
+.close {
+    position: absolute;
+    right: 80px;
+    height: 200;
+}
+
+    .close:hover {
+        background-color: #231d1c;
+        color: rgb(224, 26, 26);
+    }
+
+/* Style the input */
+input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+}
+
+.scroller {
+    width: 610px;
+    height: 400px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+}
+
+.event-color-c {
+    display: flex;
+    margin: 16px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.event-color-label {
+    flex: 1 0 auto;
+}
+
+.event-color {
+    width: 3px;
+    height: 30px;
+    border-radius: 15px;
+    margin-right: 10px;
+    margin-left: 240px;
+    background: #5ac8fa;
+}
+
+.crud-color-row {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.crud-color-c {
+    padding: 3px;
+    margin: 2px;
+}
+
+.crud-color {
+    position: relative;
+    min-width: 46px;
+    min-height: 46px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 23px;
+    background: #5ac8fa;
+}
+
+.crud-color-c.selected,
+.crud-color-c:hover {
+    box-shadow: inset 0 0 0 3px #007bff;
+    border-radius: 48px;
+}
+
+.crud-color:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -10px;
+    color: #f7f7f7;
+    font-size: 20px;
+    text-shadow: 0 0 3px #000;
+    display: none;
+}
+
+.crud-color-c.selected .crud-color:before {
+    display: block;
+}
+
+
+
+
+
+
+
+.bg-light {
+    background-color: #52957c !important;
+}
+
+.bg-dark {
+    background-color: #52958B !important;
+}
+
+.bg-table {
+    background-color: #afc9bd !important;
+}
+
+.sidebar h6 {
+    color: #4a3423;
+}
+
+.header h6 {
+    font-size: 1rem;
+    color: black;
+}
+
+th {
+    color: #000;
+}
+
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
+    background: #2e5263;
+}
+
+.form-control, .form-select {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6C7293;
+    background-color: #C4CDC1;
+    background-clip: padding-box;
+    border: 1px solid #000;
+    appearance: none;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+}
+
+    .form-control:focus, .form-select:focus {
+        background-color: #C4CDC1;
+    }
+
+.nav-link {
+    color: #000;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #52957C;
+    border-color: #52957C;
+}
+
+//Calendar
+
+* {
+    box-sizing: border-box;
+}
+
+.month {
+    padding: 25px 25px;
+    width: 100%;
+    background: #52957C;
+    text-align: center;
+}
+
+    .month ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+        .month ul li {
+            color: white;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+    .month .prev {
+        float: left;
+        padding-top: 10px;
+    }
+
+    .month .next {
+        float: right;
+        padding-top: 10px;
+    }
+
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    padding-left: 30px;
+    background-color: #ddd;
+}
+
+    .weekdays li {
+        display: inline-block;
+        width: 12%;
+        color: #666;
+        text-align: center;
+    }
+
+.days {
+    padding: 10px 0;
+    padding-left: 30px;
+    background: #eee;
+    margin: 0;
+}
+
+    .days li {
+        list-style-type: none;
+        display: inline-block;
+        width: 12%;
+        text-align: center;
+        margin-bottom: 5px;
+        font-size: 12px;
+        color: #777;
+    }
+
+.active-cal {
+    padding: 5px;
+    background: #52957C;
+    color: white !important
+}
+
+.task-active {
+    padding: 5px;
+    background: #AFC9BD;
+    color: white !important
+}
+
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+    .weekdays li, .days li {
+        width: 13.1%;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .weekdays li, .days li {
+        width: 12.5%;
+    }
+
+        .days li .active {
+            padding: 2px;
+        }
+}
+
+@media screen and (max-width: 290px) {
+    .weekdays li, .days li {
+        width: 12.2%;
+    }
+}

@@ -1,0 +1,1396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ONSETDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADMINS">
+          <Key>
+            <PropertyRef Name="ADMIN ID" />
+          </Key>
+          <Property Name="ADMIN ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADMIN NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ADMIN EMAIL" Type="nvarchar" MaxLength="320" Nullable="false" />
+          <Property Name="ADMIN PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CHATMESSAGES">
+          <Key>
+            <PropertyRef Name="CHATMESSAGE ID" />
+          </Key>
+          <Property Name="CHATMESSAGE ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROOM ID" Type="int" Nullable="false" />
+          <Property Name="USER ID" Type="int" Nullable="false" />
+          <Property Name="MESSAGE" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CHATROOMS">
+          <Key>
+            <PropertyRef Name="CHATROOM ID" />
+          </Key>
+          <Property Name="CHATROOM ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROOM ID" Type="int" Nullable="false" />
+          <Property Name="USER ID" Type="int" Nullable="false" />
+          <Property Name="ISREAD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLOYEES">
+          <Key>
+            <PropertyRef Name="EMPLOYEE ID" />
+          </Key>
+          <Property Name="EMPLOYEE ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLOYEE FIRSTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMPLOYEE LASTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMPLOYEE EMAIL" Type="nvarchar" MaxLength="320" Nullable="false" />
+          <Property Name="EMPLOYEE DESIGNATION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMPLOYEE ORGANIZATION" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMPLOYEE PHONE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EMPLOYEE GENDER" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="EMPLOYEE DATEOFBIRTH" Type="date" Nullable="false" />
+          <Property Name="EMPLOYEE LOCATION" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EMPLOYEE REGISTRATIONDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EVENTS">
+          <Key>
+            <PropertyRef Name="EVENT ID" />
+          </Key>
+          <Property Name="EVENT ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EVENT NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EVENT CATEGORY" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EVENT DESCRIPTION" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="EVENT DEADLINE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EVENTUSERS">
+          <Key>
+            <PropertyRef Name="EVENTUSER ID" />
+          </Key>
+          <Property Name="EVENTUSER ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EVENT ID" Type="int" Nullable="false" />
+          <Property Name="USER ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MANAGERS">
+          <Key>
+            <PropertyRef Name="MANAGER ID" />
+          </Key>
+          <Property Name="MANAGER ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANAGER FIRSTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MANAGER LASTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MANAGER EMAIL" Type="nvarchar" MaxLength="320" Nullable="false" />
+          <Property Name="MANAGER DESIGNATION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MANAGER ORGANIZATION" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MANAGER PHONE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MANAGER GENDER" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="MANAGER DATEOFBIRTH" Type="date" Nullable="false" />
+          <Property Name="MANAGER LOCATION" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="MANAGER REGISTRATIONDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROGRESSEMPLOYEES">
+          <Key>
+            <PropertyRef Name="PROGRESSEMPLOYEE ID" />
+          </Key>
+          <Property Name="PROGRESSEMPLOYEE ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROGRESS ID" Type="int" Nullable="false" />
+          <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROGRESSES">
+          <Key>
+            <PropertyRef Name="PROGRESS ID" />
+          </Key>
+          <Property Name="PROGRESS ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROGRESS DESCRIPTION" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PROGRESS PERCENTAGE" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROGRESSFILES">
+          <Key>
+            <PropertyRef Name="PROGRESSFILE ID" />
+          </Key>
+          <Property Name="PROGRESSFILE ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROGRESS ID" Type="int" Nullable="false" />
+          <Property Name="FILES" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REPORTS">
+          <Key>
+            <PropertyRef Name="REPORT ID" />
+          </Key>
+          <Property Name="REPORT ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REPORT BODY" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REPORTUSERS">
+          <Key>
+            <PropertyRef Name="REPORTUSER ID" />
+          </Key>
+          <Property Name="REPORTUSER ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REPORT ID" Type="int" Nullable="false" />
+          <Property Name="USER ID BY" Type="int" Nullable="false" />
+          <Property Name="USER ID FOR" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROOMS">
+          <Key>
+            <PropertyRef Name="ROOM ID" />
+          </Key>
+          <Property Name="ROOM ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROOM NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TASKEMPLOYEES">
+          <Key>
+            <PropertyRef Name="TASKEMPLOYEE ID" />
+          </Key>
+          <Property Name="TASKEMPLOYEE ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TASK ID" Type="int" Nullable="false" />
+          <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TASKFILES">
+          <Key>
+            <PropertyRef Name="TASKFILE ID" />
+          </Key>
+          <Property Name="TASKFILE ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TASK ID" Type="int" Nullable="false" />
+          <Property Name="FILES" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TASKMANAGERS">
+          <Key>
+            <PropertyRef Name="TASKMANAGER ID" />
+          </Key>
+          <Property Name="TASKMANAGER ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TASK ID" Type="int" Nullable="false" />
+          <Property Name="MANAGER ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TASKPROGRESSES">
+          <Key>
+            <PropertyRef Name="TASKPROGRESS ID" />
+          </Key>
+          <Property Name="TASKPROGRESS ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TASK ID" Type="int" Nullable="false" />
+          <Property Name="PROGRESS ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TASKS">
+          <Key>
+            <PropertyRef Name="TASK ID" />
+          </Key>
+          <Property Name="TASK ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TASK NAME" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="TASK CATEGORY" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TASK DESCRIPTION" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="TASK DEADLINE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERBIOS">
+          <Key>
+            <PropertyRef Name="USERBIO ID" />
+          </Key>
+          <Property Name="USERBIO ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER ID" Type="int" Nullable="false" />
+          <Property Name="USER BIO" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERPICS">
+          <Key>
+            <PropertyRef Name="USERPIC ID" />
+          </Key>
+          <Property Name="USERPIC ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER ID" Type="int" Nullable="false" />
+          <Property Name="USER PIC" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USER ID" />
+          </Key>
+          <Property Name="USER ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER EMAIL" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="USER PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USER TYPE" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CHATMESSA__ROOM __6B24EA82">
+          <End Role="ROOMS" Type="Self.ROOMS" Multiplicity="1" />
+          <End Role="CHATMESSAGES" Type="Self.CHATMESSAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOMS">
+              <PropertyRef Name="ROOM ID" />
+            </Principal>
+            <Dependent Role="CHATMESSAGES">
+              <PropertyRef Name="ROOM ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHATMESSA__USER __6C190EBB">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="CHATMESSAGES" Type="Self.CHATMESSAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER ID" />
+            </Principal>
+            <Dependent Role="CHATMESSAGES">
+              <PropertyRef Name="USER ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHATROOMS__ROOM __656C112C">
+          <End Role="ROOMS" Type="Self.ROOMS" Multiplicity="1" />
+          <End Role="CHATROOMS" Type="Self.CHATROOMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOMS">
+              <PropertyRef Name="ROOM ID" />
+            </Principal>
+            <Dependent Role="CHATROOMS">
+              <PropertyRef Name="ROOM ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHATROOMS__USER __66603565">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="CHATROOMS" Type="Self.CHATROOMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER ID" />
+            </Principal>
+            <Dependent Role="CHATROOMS">
+              <PropertyRef Name="USER ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EVENTUSER__EVENT__59063A47">
+          <End Role="EVENTS" Type="Self.EVENTS" Multiplicity="1" />
+          <End Role="EVENTUSERS" Type="Self.EVENTUSERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENTS">
+              <PropertyRef Name="EVENT ID" />
+            </Principal>
+            <Dependent Role="EVENTUSERS">
+              <PropertyRef Name="EVENT ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EVENTUSER__USER __59FA5E80">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="EVENTUSERS" Type="Self.EVENTUSERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER ID" />
+            </Principal>
+            <Dependent Role="EVENTUSERS">
+              <PropertyRef Name="USER ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROGRESSE__EMPLO__4F7CD00D">
+          <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="1" />
+          <End Role="PROGRESSEMPLOYEES" Type="Self.PROGRESSEMPLOYEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES">
+              <PropertyRef Name="EMPLOYEE ID" />
+            </Principal>
+            <Dependent Role="PROGRESSEMPLOYEES">
+              <PropertyRef Name="EMPLOYEE ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROGRESSE__PROGR__4E88ABD4">
+          <End Role="PROGRESSES" Type="Self.PROGRESSES" Multiplicity="1" />
+          <End Role="PROGRESSEMPLOYEES" Type="Self.PROGRESSEMPLOYEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROGRESSES">
+              <PropertyRef Name="PROGRESS ID" />
+            </Principal>
+            <Dependent Role="PROGRESSEMPLOYEES">
+              <PropertyRef Name="PROGRESS ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROGRESSF__PROGR__5441852A">
+          <End Role="PROGRESSES" Type="Self.PROGRESSES" Multiplicity="1" />
+          <End Role="PROGRESSFILES" Type="Self.PROGRESSFILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROGRESSES">
+              <PropertyRef Name="PROGRESS ID" />
+            </Principal>
+            <Dependent Role="PROGRESSFILES">
+              <PropertyRef Name="PROGRESS ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPORTUSE__REPOR__5EBF139D">
+          <End Role="REPORTS" Type="Self.REPORTS" Multiplicity="1" />
+          <End Role="REPORTUSERS" Type="Self.REPORTUSERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REPORTS">
+              <PropertyRef Name="REPORT ID" />
+            </Principal>
+            <Dependent Role="REPORTUSERS">
+              <PropertyRef Name="REPORT ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPORTUSE__USER __5FB337D6">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="REPORTUSERS" Type="Self.REPORTUSERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER ID" />
+            </Principal>
+            <Dependent Role="REPORTUSERS">
+              <PropertyRef Name="USER ID BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPORTUSE__USER __60A75C0F">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="REPORTUSERS" Type="Self.REPORTUSERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER ID" />
+            </Principal>
+            <Dependent Role="REPORTUSERS">
+              <PropertyRef Name="USER ID FOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKEMPLO__EMPLO__3F466844">
+          <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="1" />
+          <End Role="TASKEMPLOYEES" Type="Self.TASKEMPLOYEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES">
+              <PropertyRef Name="EMPLOYEE ID" />
+            </Principal>
+            <Dependent Role="TASKEMPLOYEES">
+              <PropertyRef Name="EMPLOYEE ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKEMPLO__TASK __3E52440B">
+          <End Role="TASKS" Type="Self.TASKS" Multiplicity="1" />
+          <End Role="TASKEMPLOYEES" Type="Self.TASKEMPLOYEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASKS">
+              <PropertyRef Name="TASK ID" />
+            </Principal>
+            <Dependent Role="TASKEMPLOYEES">
+              <PropertyRef Name="TASK ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKFILES__TASK __440B1D61">
+          <End Role="TASKS" Type="Self.TASKS" Multiplicity="1" />
+          <End Role="TASKFILES" Type="Self.TASKFILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASKS">
+              <PropertyRef Name="TASK ID" />
+            </Principal>
+            <Dependent Role="TASKFILES">
+              <PropertyRef Name="TASK ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKMANAG__MANAG__398D8EEE">
+          <End Role="MANAGERS" Type="Self.MANAGERS" Multiplicity="1" />
+          <End Role="TASKMANAGERS" Type="Self.TASKMANAGERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANAGERS">
+              <PropertyRef Name="MANAGER ID" />
+            </Principal>
+            <Dependent Role="TASKMANAGERS">
+              <PropertyRef Name="MANAGER ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKMANAG__TASK __38996AB5">
+          <End Role="TASKS" Type="Self.TASKS" Multiplicity="1" />
+          <End Role="TASKMANAGERS" Type="Self.TASKMANAGERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASKS">
+              <PropertyRef Name="TASK ID" />
+            </Principal>
+            <Dependent Role="TASKMANAGERS">
+              <PropertyRef Name="TASK ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKPROGR__PROGR__49C3F6B7">
+          <End Role="PROGRESSES" Type="Self.PROGRESSES" Multiplicity="1" />
+          <End Role="TASKPROGRESSES" Type="Self.TASKPROGRESSES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROGRESSES">
+              <PropertyRef Name="PROGRESS ID" />
+            </Principal>
+            <Dependent Role="TASKPROGRESSES">
+              <PropertyRef Name="PROGRESS ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKPROGR__TASK __48CFD27E">
+          <End Role="TASKS" Type="Self.TASKS" Multiplicity="1" />
+          <End Role="TASKPROGRESSES" Type="Self.TASKPROGRESSES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASKS">
+              <PropertyRef Name="TASK ID" />
+            </Principal>
+            <Dependent Role="TASKPROGRESSES">
+              <PropertyRef Name="TASK ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERBIOS__USER I__2F10007B">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="USERBIOS" Type="Self.USERBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER ID" />
+            </Principal>
+            <Dependent Role="USERBIOS">
+              <PropertyRef Name="USER ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERPICS__USER I__33D4B598">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="USERPICS" Type="Self.USERPICS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER ID" />
+            </Principal>
+            <Dependent Role="USERPICS">
+              <PropertyRef Name="USER ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ONSETDBModelStoreContainer">
+          <EntitySet Name="ADMINS" EntityType="Self.ADMINS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHATMESSAGES" EntityType="Self.CHATMESSAGES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHATROOMS" EntityType="Self.CHATROOMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EVENTS" EntityType="Self.EVENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EVENTUSERS" EntityType="Self.EVENTUSERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MANAGERS" EntityType="Self.MANAGERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROGRESSEMPLOYEES" EntityType="Self.PROGRESSEMPLOYEES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROGRESSES" EntityType="Self.PROGRESSES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROGRESSFILES" EntityType="Self.PROGRESSFILES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPORTS" EntityType="Self.REPORTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPORTUSERS" EntityType="Self.REPORTUSERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOMS" EntityType="Self.ROOMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TASKEMPLOYEES" EntityType="Self.TASKEMPLOYEES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TASKFILES" EntityType="Self.TASKFILES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TASKMANAGERS" EntityType="Self.TASKMANAGERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TASKPROGRESSES" EntityType="Self.TASKPROGRESSES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TASKS" EntityType="Self.TASKS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERBIOS" EntityType="Self.USERBIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERPICS" EntityType="Self.USERPICS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CHATMESSA__ROOM __6B24EA82" Association="Self.FK__CHATMESSA__ROOM __6B24EA82">
+            <End Role="ROOMS" EntitySet="ROOMS" />
+            <End Role="CHATMESSAGES" EntitySet="CHATMESSAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHATMESSA__USER __6C190EBB" Association="Self.FK__CHATMESSA__USER __6C190EBB">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="CHATMESSAGES" EntitySet="CHATMESSAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHATROOMS__ROOM __656C112C" Association="Self.FK__CHATROOMS__ROOM __656C112C">
+            <End Role="ROOMS" EntitySet="ROOMS" />
+            <End Role="CHATROOMS" EntitySet="CHATROOMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHATROOMS__USER __66603565" Association="Self.FK__CHATROOMS__USER __66603565">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="CHATROOMS" EntitySet="CHATROOMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EVENTUSER__EVENT__59063A47" Association="Self.FK__EVENTUSER__EVENT__59063A47">
+            <End Role="EVENTS" EntitySet="EVENTS" />
+            <End Role="EVENTUSERS" EntitySet="EVENTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EVENTUSER__USER __59FA5E80" Association="Self.FK__EVENTUSER__USER __59FA5E80">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="EVENTUSERS" EntitySet="EVENTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROGRESSE__EMPLO__4F7CD00D" Association="Self.FK__PROGRESSE__EMPLO__4F7CD00D">
+            <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+            <End Role="PROGRESSEMPLOYEES" EntitySet="PROGRESSEMPLOYEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROGRESSE__PROGR__4E88ABD4" Association="Self.FK__PROGRESSE__PROGR__4E88ABD4">
+            <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+            <End Role="PROGRESSEMPLOYEES" EntitySet="PROGRESSEMPLOYEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROGRESSF__PROGR__5441852A" Association="Self.FK__PROGRESSF__PROGR__5441852A">
+            <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+            <End Role="PROGRESSFILES" EntitySet="PROGRESSFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPORTUSE__REPOR__5EBF139D" Association="Self.FK__REPORTUSE__REPOR__5EBF139D">
+            <End Role="REPORTS" EntitySet="REPORTS" />
+            <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPORTUSE__USER __5FB337D6" Association="Self.FK__REPORTUSE__USER __5FB337D6">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPORTUSE__USER __60A75C0F" Association="Self.FK__REPORTUSE__USER __60A75C0F">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKEMPLO__EMPLO__3F466844" Association="Self.FK__TASKEMPLO__EMPLO__3F466844">
+            <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+            <End Role="TASKEMPLOYEES" EntitySet="TASKEMPLOYEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKEMPLO__TASK __3E52440B" Association="Self.FK__TASKEMPLO__TASK __3E52440B">
+            <End Role="TASKS" EntitySet="TASKS" />
+            <End Role="TASKEMPLOYEES" EntitySet="TASKEMPLOYEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKFILES__TASK __440B1D61" Association="Self.FK__TASKFILES__TASK __440B1D61">
+            <End Role="TASKS" EntitySet="TASKS" />
+            <End Role="TASKFILES" EntitySet="TASKFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKMANAG__MANAG__398D8EEE" Association="Self.FK__TASKMANAG__MANAG__398D8EEE">
+            <End Role="MANAGERS" EntitySet="MANAGERS" />
+            <End Role="TASKMANAGERS" EntitySet="TASKMANAGERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKMANAG__TASK __38996AB5" Association="Self.FK__TASKMANAG__TASK __38996AB5">
+            <End Role="TASKS" EntitySet="TASKS" />
+            <End Role="TASKMANAGERS" EntitySet="TASKMANAGERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKPROGR__PROGR__49C3F6B7" Association="Self.FK__TASKPROGR__PROGR__49C3F6B7">
+            <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+            <End Role="TASKPROGRESSES" EntitySet="TASKPROGRESSES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKPROGR__TASK __48CFD27E" Association="Self.FK__TASKPROGR__TASK __48CFD27E">
+            <End Role="TASKS" EntitySet="TASKS" />
+            <End Role="TASKPROGRESSES" EntitySet="TASKPROGRESSES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERBIOS__USER I__2F10007B" Association="Self.FK__USERBIOS__USER I__2F10007B">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USERBIOS" EntitySet="USERBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERPICS__USER I__33D4B598" Association="Self.FK__USERPICS__USER I__33D4B598">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USERPICS" EntitySet="USERPICS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ONSETDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="ADMIN_ID" />
+          </Key>
+          <Property Name="ADMIN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADMIN_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ADMIN_EMAIL" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ADMIN_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CHATMESSAGE">
+          <Key>
+            <PropertyRef Name="CHATMESSAGE_ID" />
+          </Key>
+          <Property Name="CHATMESSAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROOM_ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="MESSAGE" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ROOM" Relationship="Self.FK__CHATMESSA__ROOM___6B24EA82" FromRole="CHATMESSAGES" ToRole="ROOMS" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__CHATMESSA__USER___6C190EBB" FromRole="CHATMESSAGES" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="CHATROOM">
+          <Key>
+            <PropertyRef Name="CHATROOM_ID" />
+          </Key>
+          <Property Name="CHATROOM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROOM_ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="ISREAD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ROOM" Relationship="Self.FK__CHATROOMS__ROOM___656C112C" FromRole="CHATROOMS" ToRole="ROOMS" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__CHATROOMS__USER___66603565" FromRole="CHATROOMS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLOYEE_FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMPLOYEE_LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMPLOYEE_EMAIL" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMPLOYEE_DESIGNATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMPLOYEE_ORGANIZATION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMPLOYEE_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLOYEE_GENDER" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLOYEE_DATEOFBIRTH" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EMPLOYEE_LOCATION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMPLOYEE_REGISTRATIONDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="PROGRESSEMPLOYEES" Relationship="Self.FK__PROGRESSE__EMPLO__4F7CD00D" FromRole="EMPLOYEES" ToRole="PROGRESSEMPLOYEES" />
+          <NavigationProperty Name="TASKEMPLOYEES" Relationship="Self.FK__TASKEMPLO__EMPLO__3F466844" FromRole="EMPLOYEES" ToRole="TASKEMPLOYEES" />
+        </EntityType>
+        <EntityType Name="EVENT">
+          <Key>
+            <PropertyRef Name="EVENT_ID" />
+          </Key>
+          <Property Name="EVENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EVENT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EVENT_CATEGORY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EVENT_DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EVENT_DEADLINE" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EVENTUSERS" Relationship="Self.FK__EVENTUSER__EVENT__59063A47" FromRole="EVENTS" ToRole="EVENTUSERS" />
+        </EntityType>
+        <EntityType Name="EVENTUSER">
+          <Key>
+            <PropertyRef Name="EVENTUSER_ID" />
+          </Key>
+          <Property Name="EVENTUSER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EVENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EVENT" Relationship="Self.FK__EVENTUSER__EVENT__59063A47" FromRole="EVENTUSERS" ToRole="EVENTS" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__EVENTUSER__USER___59FA5E80" FromRole="EVENTUSERS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="MANAGER">
+          <Key>
+            <PropertyRef Name="MANAGER_ID" />
+          </Key>
+          <Property Name="MANAGER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANAGER_FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MANAGER_LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MANAGER_EMAIL" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MANAGER_DESIGNATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MANAGER_ORGANIZATION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MANAGER_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MANAGER_GENDER" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MANAGER_DATEOFBIRTH" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MANAGER_LOCATION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MANAGER_REGISTRATIONDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="TASKMANAGERS" Relationship="Self.FK__TASKMANAG__MANAG__398D8EEE" FromRole="MANAGERS" ToRole="TASKMANAGERS" />
+        </EntityType>
+        <EntityType Name="PROGRESSEMPLOYEE">
+          <Key>
+            <PropertyRef Name="PROGRESSEMPLOYEE_ID" />
+          </Key>
+          <Property Name="PROGRESSEMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROGRESS_ID" Type="Int32" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__PROGRESSE__EMPLO__4F7CD00D" FromRole="PROGRESSEMPLOYEES" ToRole="EMPLOYEES" />
+          <NavigationProperty Name="PROGRESS" Relationship="Self.FK__PROGRESSE__PROGR__4E88ABD4" FromRole="PROGRESSEMPLOYEES" ToRole="PROGRESSES" />
+        </EntityType>
+        <EntityType Name="PROGRESS">
+          <Key>
+            <PropertyRef Name="PROGRESS_ID" />
+          </Key>
+          <Property Name="PROGRESS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROGRESS_DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROGRESS_PERCENTAGE" Type="Single" Nullable="false" />
+          <NavigationProperty Name="PROGRESSEMPLOYEES" Relationship="Self.FK__PROGRESSE__PROGR__4E88ABD4" FromRole="PROGRESSES" ToRole="PROGRESSEMPLOYEES" />
+          <NavigationProperty Name="PROGRESSFILES" Relationship="Self.FK__PROGRESSF__PROGR__5441852A" FromRole="PROGRESSES" ToRole="PROGRESSFILES" />
+          <NavigationProperty Name="TASKPROGRESSES" Relationship="Self.FK__TASKPROGR__PROGR__49C3F6B7" FromRole="PROGRESSES" ToRole="TASKPROGRESSES" />
+        </EntityType>
+        <EntityType Name="PROGRESSFILE">
+          <Key>
+            <PropertyRef Name="PROGRESSFILE_ID" />
+          </Key>
+          <Property Name="PROGRESSFILE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROGRESS_ID" Type="Int32" Nullable="false" />
+          <Property Name="FILES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PROGRESS" Relationship="Self.FK__PROGRESSF__PROGR__5441852A" FromRole="PROGRESSFILES" ToRole="PROGRESSES" />
+        </EntityType>
+        <EntityType Name="REPORT">
+          <Key>
+            <PropertyRef Name="REPORT_ID" />
+          </Key>
+          <Property Name="REPORT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REPORT_BODY" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="REPORTUSERS" Relationship="Self.FK__REPORTUSE__REPOR__5EBF139D" FromRole="REPORTS" ToRole="REPORTUSERS" />
+        </EntityType>
+        <EntityType Name="REPORTUSER">
+          <Key>
+            <PropertyRef Name="REPORTUSER_ID" />
+          </Key>
+          <Property Name="REPORTUSER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REPORT_ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID_BY" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID_FOR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="REPORT" Relationship="Self.FK__REPORTUSE__REPOR__5EBF139D" FromRole="REPORTUSERS" ToRole="REPORTS" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__REPORTUSE__USER___5FB337D6" FromRole="REPORTUSERS" ToRole="USERS" />
+          <NavigationProperty Name="USER1" Relationship="Self.FK__REPORTUSE__USER___60A75C0F" FromRole="REPORTUSERS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ROOM_ID" />
+          </Key>
+          <Property Name="ROOM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROOM_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CHATMESSAGES" Relationship="Self.FK__CHATMESSA__ROOM___6B24EA82" FromRole="ROOMS" ToRole="CHATMESSAGES" />
+          <NavigationProperty Name="CHATROOMS" Relationship="Self.FK__CHATROOMS__ROOM___656C112C" FromRole="ROOMS" ToRole="CHATROOMS" />
+        </EntityType>
+        <EntityType Name="TASKEMPLOYEE">
+          <Key>
+            <PropertyRef Name="TASKEMPLOYEE_ID" />
+          </Key>
+          <Property Name="TASKEMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TASK_ID" Type="Int32" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__TASKEMPLO__EMPLO__3F466844" FromRole="TASKEMPLOYEES" ToRole="EMPLOYEES" />
+          <NavigationProperty Name="TASK" Relationship="Self.FK__TASKEMPLO__TASK___3E52440B" FromRole="TASKEMPLOYEES" ToRole="TASKS" />
+        </EntityType>
+        <EntityType Name="TASKFILE">
+          <Key>
+            <PropertyRef Name="TASKFILE_ID" />
+          </Key>
+          <Property Name="TASKFILE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TASK_ID" Type="Int32" Nullable="false" />
+          <Property Name="FILES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TASK" Relationship="Self.FK__TASKFILES__TASK___440B1D61" FromRole="TASKFILES" ToRole="TASKS" />
+        </EntityType>
+        <EntityType Name="TASKMANAGER">
+          <Key>
+            <PropertyRef Name="TASKMANAGER_ID" />
+          </Key>
+          <Property Name="TASKMANAGER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TASK_ID" Type="Int32" Nullable="false" />
+          <Property Name="MANAGER_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MANAGER" Relationship="Self.FK__TASKMANAG__MANAG__398D8EEE" FromRole="TASKMANAGERS" ToRole="MANAGERS" />
+          <NavigationProperty Name="TASK" Relationship="Self.FK__TASKMANAG__TASK___38996AB5" FromRole="TASKMANAGERS" ToRole="TASKS" />
+        </EntityType>
+        <EntityType Name="TASKPROGRESS">
+          <Key>
+            <PropertyRef Name="TASKPROGRESS_ID" />
+          </Key>
+          <Property Name="TASKPROGRESS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TASK_ID" Type="Int32" Nullable="false" />
+          <Property Name="PROGRESS_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PROGRESS" Relationship="Self.FK__TASKPROGR__PROGR__49C3F6B7" FromRole="TASKPROGRESSES" ToRole="PROGRESSES" />
+          <NavigationProperty Name="TASK" Relationship="Self.FK__TASKPROGR__TASK___48CFD27E" FromRole="TASKPROGRESSES" ToRole="TASKS" />
+        </EntityType>
+        <EntityType Name="TASK">
+          <Key>
+            <PropertyRef Name="TASK_ID" />
+          </Key>
+          <Property Name="TASK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TASK_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TASK_CATEGORY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TASK_DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TASK_DEADLINE" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TASKEMPLOYEES" Relationship="Self.FK__TASKEMPLO__TASK___3E52440B" FromRole="TASKS" ToRole="TASKEMPLOYEES" />
+          <NavigationProperty Name="TASKFILES" Relationship="Self.FK__TASKFILES__TASK___440B1D61" FromRole="TASKS" ToRole="TASKFILES" />
+          <NavigationProperty Name="TASKMANAGERS" Relationship="Self.FK__TASKMANAG__TASK___38996AB5" FromRole="TASKS" ToRole="TASKMANAGERS" />
+          <NavigationProperty Name="TASKPROGRESSES" Relationship="Self.FK__TASKPROGR__TASK___48CFD27E" FromRole="TASKS" ToRole="TASKPROGRESSES" />
+        </EntityType>
+        <EntityType Name="USERBIO">
+          <Key>
+            <PropertyRef Name="USERBIO_ID" />
+          </Key>
+          <Property Name="USERBIO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_BIO" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__USERBIOS__USER_I__2F10007B" FromRole="USERBIOS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USERPIC">
+          <Key>
+            <PropertyRef Name="USERPIC_ID" />
+          </Key>
+          <Property Name="USERPIC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_PIC" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__USERPICS__USER_I__33D4B598" FromRole="USERPICS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_EMAIL" Type="String" MaxLength="350" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USER_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USER_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CHATMESSAGES" Relationship="Self.FK__CHATMESSA__USER___6C190EBB" FromRole="USERS" ToRole="CHATMESSAGES" />
+          <NavigationProperty Name="CHATROOMS" Relationship="Self.FK__CHATROOMS__USER___66603565" FromRole="USERS" ToRole="CHATROOMS" />
+          <NavigationProperty Name="EVENTUSERS" Relationship="Self.FK__EVENTUSER__USER___59FA5E80" FromRole="USERS" ToRole="EVENTUSERS" />
+          <NavigationProperty Name="REPORTUSERS" Relationship="Self.FK__REPORTUSE__USER___5FB337D6" FromRole="USERS" ToRole="REPORTUSERS" />
+          <NavigationProperty Name="REPORTUSERS1" Relationship="Self.FK__REPORTUSE__USER___60A75C0F" FromRole="USERS" ToRole="REPORTUSERS" />
+          <NavigationProperty Name="USERBIOS" Relationship="Self.FK__USERBIOS__USER_I__2F10007B" FromRole="USERS" ToRole="USERBIOS" />
+          <NavigationProperty Name="USERPICS" Relationship="Self.FK__USERPICS__USER_I__33D4B598" FromRole="USERS" ToRole="USERPICS" />
+        </EntityType>
+        <Association Name="FK__CHATMESSA__ROOM___6B24EA82">
+          <End Role="ROOMS" Type="Self.ROOM" Multiplicity="1" />
+          <End Role="CHATMESSAGES" Type="Self.CHATMESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOMS">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="CHATMESSAGES">
+              <PropertyRef Name="ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHATMESSA__USER___6C190EBB">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="CHATMESSAGES" Type="Self.CHATMESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="CHATMESSAGES">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHATROOMS__ROOM___656C112C">
+          <End Role="ROOMS" Type="Self.ROOM" Multiplicity="1" />
+          <End Role="CHATROOMS" Type="Self.CHATROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOMS">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="CHATROOMS">
+              <PropertyRef Name="ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHATROOMS__USER___66603565">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="CHATROOMS" Type="Self.CHATROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="CHATROOMS">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROGRESSE__EMPLO__4F7CD00D">
+          <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="PROGRESSEMPLOYEES" Type="Self.PROGRESSEMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Principal>
+            <Dependent Role="PROGRESSEMPLOYEES">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKEMPLO__EMPLO__3F466844">
+          <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="TASKEMPLOYEES" Type="Self.TASKEMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEES">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Principal>
+            <Dependent Role="TASKEMPLOYEES">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EVENTUSER__EVENT__59063A47">
+          <End Role="EVENTS" Type="Self.EVENT" Multiplicity="1" />
+          <End Role="EVENTUSERS" Type="Self.EVENTUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENTS">
+              <PropertyRef Name="EVENT_ID" />
+            </Principal>
+            <Dependent Role="EVENTUSERS">
+              <PropertyRef Name="EVENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EVENTUSER__USER___59FA5E80">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="EVENTUSERS" Type="Self.EVENTUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="EVENTUSERS">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKMANAG__MANAG__398D8EEE">
+          <End Role="MANAGERS" Type="Self.MANAGER" Multiplicity="1" />
+          <End Role="TASKMANAGERS" Type="Self.TASKMANAGER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANAGERS">
+              <PropertyRef Name="MANAGER_ID" />
+            </Principal>
+            <Dependent Role="TASKMANAGERS">
+              <PropertyRef Name="MANAGER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROGRESSE__PROGR__4E88ABD4">
+          <End Role="PROGRESSES" Type="Self.PROGRESS" Multiplicity="1" />
+          <End Role="PROGRESSEMPLOYEES" Type="Self.PROGRESSEMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROGRESSES">
+              <PropertyRef Name="PROGRESS_ID" />
+            </Principal>
+            <Dependent Role="PROGRESSEMPLOYEES">
+              <PropertyRef Name="PROGRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROGRESSF__PROGR__5441852A">
+          <End Role="PROGRESSES" Type="Self.PROGRESS" Multiplicity="1" />
+          <End Role="PROGRESSFILES" Type="Self.PROGRESSFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROGRESSES">
+              <PropertyRef Name="PROGRESS_ID" />
+            </Principal>
+            <Dependent Role="PROGRESSFILES">
+              <PropertyRef Name="PROGRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKPROGR__PROGR__49C3F6B7">
+          <End Role="PROGRESSES" Type="Self.PROGRESS" Multiplicity="1" />
+          <End Role="TASKPROGRESSES" Type="Self.TASKPROGRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROGRESSES">
+              <PropertyRef Name="PROGRESS_ID" />
+            </Principal>
+            <Dependent Role="TASKPROGRESSES">
+              <PropertyRef Name="PROGRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPORTUSE__REPOR__5EBF139D">
+          <End Role="REPORTS" Type="Self.REPORT" Multiplicity="1" />
+          <End Role="REPORTUSERS" Type="Self.REPORTUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REPORTS">
+              <PropertyRef Name="REPORT_ID" />
+            </Principal>
+            <Dependent Role="REPORTUSERS">
+              <PropertyRef Name="REPORT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPORTUSE__USER___5FB337D6">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="REPORTUSERS" Type="Self.REPORTUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="REPORTUSERS">
+              <PropertyRef Name="USER_ID_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPORTUSE__USER___60A75C0F">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="REPORTUSERS" Type="Self.REPORTUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="REPORTUSERS">
+              <PropertyRef Name="USER_ID_FOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKEMPLO__TASK___3E52440B">
+          <End Role="TASKS" Type="Self.TASK" Multiplicity="1" />
+          <End Role="TASKEMPLOYEES" Type="Self.TASKEMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASKS">
+              <PropertyRef Name="TASK_ID" />
+            </Principal>
+            <Dependent Role="TASKEMPLOYEES">
+              <PropertyRef Name="TASK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKFILES__TASK___440B1D61">
+          <End Role="TASKS" Type="Self.TASK" Multiplicity="1" />
+          <End Role="TASKFILES" Type="Self.TASKFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASKS">
+              <PropertyRef Name="TASK_ID" />
+            </Principal>
+            <Dependent Role="TASKFILES">
+              <PropertyRef Name="TASK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKMANAG__TASK___38996AB5">
+          <End Role="TASKS" Type="Self.TASK" Multiplicity="1" />
+          <End Role="TASKMANAGERS" Type="Self.TASKMANAGER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASKS">
+              <PropertyRef Name="TASK_ID" />
+            </Principal>
+            <Dependent Role="TASKMANAGERS">
+              <PropertyRef Name="TASK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASKPROGR__TASK___48CFD27E">
+          <End Role="TASKS" Type="Self.TASK" Multiplicity="1" />
+          <End Role="TASKPROGRESSES" Type="Self.TASKPROGRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASKS">
+              <PropertyRef Name="TASK_ID" />
+            </Principal>
+            <Dependent Role="TASKPROGRESSES">
+              <PropertyRef Name="TASK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERBIOS__USER_I__2F10007B">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="USERBIOS" Type="Self.USERBIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="USERBIOS">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERPICS__USER_I__33D4B598">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="USERPICS" Type="Self.USERPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="USERPICS">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ONSETDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMINS" EntityType="Self.ADMIN" />
+          <EntitySet Name="CHATMESSAGES" EntityType="Self.CHATMESSAGE" />
+          <EntitySet Name="CHATROOMS" EntityType="Self.CHATROOM" />
+          <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="EVENTS" EntityType="Self.EVENT" />
+          <EntitySet Name="EVENTUSERS" EntityType="Self.EVENTUSER" />
+          <EntitySet Name="MANAGERS" EntityType="Self.MANAGER" />
+          <EntitySet Name="PROGRESSEMPLOYEES" EntityType="Self.PROGRESSEMPLOYEE" />
+          <EntitySet Name="PROGRESSES" EntityType="Self.PROGRESS" />
+          <EntitySet Name="PROGRESSFILES" EntityType="Self.PROGRESSFILE" />
+          <EntitySet Name="REPORTS" EntityType="Self.REPORT" />
+          <EntitySet Name="REPORTUSERS" EntityType="Self.REPORTUSER" />
+          <EntitySet Name="ROOMS" EntityType="Self.ROOM" />
+          <EntitySet Name="TASKEMPLOYEES" EntityType="Self.TASKEMPLOYEE" />
+          <EntitySet Name="TASKFILES" EntityType="Self.TASKFILE" />
+          <EntitySet Name="TASKMANAGERS" EntityType="Self.TASKMANAGER" />
+          <EntitySet Name="TASKPROGRESSES" EntityType="Self.TASKPROGRESS" />
+          <EntitySet Name="TASKS" EntityType="Self.TASK" />
+          <EntitySet Name="USERBIOS" EntityType="Self.USERBIO" />
+          <EntitySet Name="USERPICS" EntityType="Self.USERPIC" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK__CHATMESSA__ROOM___6B24EA82" Association="Self.FK__CHATMESSA__ROOM___6B24EA82">
+            <End Role="ROOMS" EntitySet="ROOMS" />
+            <End Role="CHATMESSAGES" EntitySet="CHATMESSAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHATMESSA__USER___6C190EBB" Association="Self.FK__CHATMESSA__USER___6C190EBB">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="CHATMESSAGES" EntitySet="CHATMESSAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHATROOMS__ROOM___656C112C" Association="Self.FK__CHATROOMS__ROOM___656C112C">
+            <End Role="ROOMS" EntitySet="ROOMS" />
+            <End Role="CHATROOMS" EntitySet="CHATROOMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHATROOMS__USER___66603565" Association="Self.FK__CHATROOMS__USER___66603565">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="CHATROOMS" EntitySet="CHATROOMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROGRESSE__EMPLO__4F7CD00D" Association="Self.FK__PROGRESSE__EMPLO__4F7CD00D">
+            <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+            <End Role="PROGRESSEMPLOYEES" EntitySet="PROGRESSEMPLOYEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKEMPLO__EMPLO__3F466844" Association="Self.FK__TASKEMPLO__EMPLO__3F466844">
+            <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+            <End Role="TASKEMPLOYEES" EntitySet="TASKEMPLOYEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EVENTUSER__EVENT__59063A47" Association="Self.FK__EVENTUSER__EVENT__59063A47">
+            <End Role="EVENTS" EntitySet="EVENTS" />
+            <End Role="EVENTUSERS" EntitySet="EVENTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EVENTUSER__USER___59FA5E80" Association="Self.FK__EVENTUSER__USER___59FA5E80">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="EVENTUSERS" EntitySet="EVENTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKMANAG__MANAG__398D8EEE" Association="Self.FK__TASKMANAG__MANAG__398D8EEE">
+            <End Role="MANAGERS" EntitySet="MANAGERS" />
+            <End Role="TASKMANAGERS" EntitySet="TASKMANAGERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROGRESSE__PROGR__4E88ABD4" Association="Self.FK__PROGRESSE__PROGR__4E88ABD4">
+            <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+            <End Role="PROGRESSEMPLOYEES" EntitySet="PROGRESSEMPLOYEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROGRESSF__PROGR__5441852A" Association="Self.FK__PROGRESSF__PROGR__5441852A">
+            <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+            <End Role="PROGRESSFILES" EntitySet="PROGRESSFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKPROGR__PROGR__49C3F6B7" Association="Self.FK__TASKPROGR__PROGR__49C3F6B7">
+            <End Role="PROGRESSES" EntitySet="PROGRESSES" />
+            <End Role="TASKPROGRESSES" EntitySet="TASKPROGRESSES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPORTUSE__REPOR__5EBF139D" Association="Self.FK__REPORTUSE__REPOR__5EBF139D">
+            <End Role="REPORTS" EntitySet="REPORTS" />
+            <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPORTUSE__USER___5FB337D6" Association="Self.FK__REPORTUSE__USER___5FB337D6">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPORTUSE__USER___60A75C0F" Association="Self.FK__REPORTUSE__USER___60A75C0F">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="REPORTUSERS" EntitySet="REPORTUSERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKEMPLO__TASK___3E52440B" Association="Self.FK__TASKEMPLO__TASK___3E52440B">
+            <End Role="TASKS" EntitySet="TASKS" />
+            <End Role="TASKEMPLOYEES" EntitySet="TASKEMPLOYEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKFILES__TASK___440B1D61" Association="Self.FK__TASKFILES__TASK___440B1D61">
+            <End Role="TASKS" EntitySet="TASKS" />
+            <End Role="TASKFILES" EntitySet="TASKFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKMANAG__TASK___38996AB5" Association="Self.FK__TASKMANAG__TASK___38996AB5">
+            <End Role="TASKS" EntitySet="TASKS" />
+            <End Role="TASKMANAGERS" EntitySet="TASKMANAGERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASKPROGR__TASK___48CFD27E" Association="Self.FK__TASKPROGR__TASK___48CFD27E">
+            <End Role="TASKS" EntitySet="TASKS" />
+            <End Role="TASKPROGRESSES" EntitySet="TASKPROGRESSES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERBIOS__USER_I__2F10007B" Association="Self.FK__USERBIOS__USER_I__2F10007B">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USERBIOS" EntitySet="USERBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERPICS__USER_I__33D4B598" Association="Self.FK__USERPICS__USER_I__33D4B598">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USERPICS" EntitySet="USERPICS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ONSETDBModelStoreContainer" CdmEntityContainer="ONSETDBEntities">
+          <EntitySetMapping Name="ADMINS">
+            <EntityTypeMapping TypeName="ONSETDBModel.ADMIN">
+              <MappingFragment StoreEntitySet="ADMINS">
+                <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN ID" />
+                <ScalarProperty Name="ADMIN_NAME" ColumnName="ADMIN NAME" />
+                <ScalarProperty Name="ADMIN_EMAIL" ColumnName="ADMIN EMAIL" />
+                <ScalarProperty Name="ADMIN_PASSWORD" ColumnName="ADMIN PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHATMESSAGES">
+            <EntityTypeMapping TypeName="ONSETDBModel.CHATMESSAGE">
+              <MappingFragment StoreEntitySet="CHATMESSAGES">
+                <ScalarProperty Name="CHATMESSAGE_ID" ColumnName="CHATMESSAGE ID" />
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHATROOMS">
+            <EntityTypeMapping TypeName="ONSETDBModel.CHATROOM">
+              <MappingFragment StoreEntitySet="CHATROOMS">
+                <ScalarProperty Name="CHATROOM_ID" ColumnName="CHATROOM ID" />
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+                <ScalarProperty Name="ISREAD" ColumnName="ISREAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEES">
+            <EntityTypeMapping TypeName="ONSETDBModel.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEES">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+                <ScalarProperty Name="EMPLOYEE_FIRSTNAME" ColumnName="EMPLOYEE FIRSTNAME" />
+                <ScalarProperty Name="EMPLOYEE_LASTNAME" ColumnName="EMPLOYEE LASTNAME" />
+                <ScalarProperty Name="EMPLOYEE_EMAIL" ColumnName="EMPLOYEE EMAIL" />
+                <ScalarProperty Name="EMPLOYEE_DESIGNATION" ColumnName="EMPLOYEE DESIGNATION" />
+                <ScalarProperty Name="EMPLOYEE_ORGANIZATION" ColumnName="EMPLOYEE ORGANIZATION" />
+                <ScalarProperty Name="EMPLOYEE_PHONE" ColumnName="EMPLOYEE PHONE" />
+                <ScalarProperty Name="EMPLOYEE_GENDER" ColumnName="EMPLOYEE GENDER" />
+                <ScalarProperty Name="EMPLOYEE_DATEOFBIRTH" ColumnName="EMPLOYEE DATEOFBIRTH" />
+                <ScalarProperty Name="EMPLOYEE_LOCATION" ColumnName="EMPLOYEE LOCATION" />
+                <ScalarProperty Name="EMPLOYEE_REGISTRATIONDATE" ColumnName="EMPLOYEE REGISTRATIONDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVENTS">
+            <EntityTypeMapping TypeName="ONSETDBModel.EVENT">
+              <MappingFragment StoreEntitySet="EVENTS">
+                <ScalarProperty Name="EVENT_ID" ColumnName="EVENT ID" />
+                <ScalarProperty Name="EVENT_NAME" ColumnName="EVENT NAME" />
+                <ScalarProperty Name="EVENT_CATEGORY" ColumnName="EVENT CATEGORY" />
+                <ScalarProperty Name="EVENT_DESCRIPTION" ColumnName="EVENT DESCRIPTION" />
+                <ScalarProperty Name="EVENT_DEADLINE" ColumnName="EVENT DEADLINE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVENTUSERS">
+            <EntityTypeMapping TypeName="ONSETDBModel.EVENTUSER">
+              <MappingFragment StoreEntitySet="EVENTUSERS">
+                <ScalarProperty Name="EVENTUSER_ID" ColumnName="EVENTUSER ID" />
+                <ScalarProperty Name="EVENT_ID" ColumnName="EVENT ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MANAGERS">
+            <EntityTypeMapping TypeName="ONSETDBModel.MANAGER">
+              <MappingFragment StoreEntitySet="MANAGERS">
+                <ScalarProperty Name="MANAGER_ID" ColumnName="MANAGER ID" />
+                <ScalarProperty Name="MANAGER_FIRSTNAME" ColumnName="MANAGER FIRSTNAME" />
+                <ScalarProperty Name="MANAGER_LASTNAME" ColumnName="MANAGER LASTNAME" />
+                <ScalarProperty Name="MANAGER_EMAIL" ColumnName="MANAGER EMAIL" />
+                <ScalarProperty Name="MANAGER_DESIGNATION" ColumnName="MANAGER DESIGNATION" />
+                <ScalarProperty Name="MANAGER_ORGANIZATION" ColumnName="MANAGER ORGANIZATION" />
+                <ScalarProperty Name="MANAGER_PHONE" ColumnName="MANAGER PHONE" />
+                <ScalarProperty Name="MANAGER_GENDER" ColumnName="MANAGER GENDER" />
+                <ScalarProperty Name="MANAGER_DATEOFBIRTH" ColumnName="MANAGER DATEOFBIRTH" />
+                <ScalarProperty Name="MANAGER_LOCATION" ColumnName="MANAGER LOCATION" />
+                <ScalarProperty Name="MANAGER_REGISTRATIONDATE" ColumnName="MANAGER REGISTRATIONDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROGRESSEMPLOYEES">
+            <EntityTypeMapping TypeName="ONSETDBModel.PROGRESSEMPLOYEE">
+              <MappingFragment StoreEntitySet="PROGRESSEMPLOYEES">
+                <ScalarProperty Name="PROGRESSEMPLOYEE_ID" ColumnName="PROGRESSEMPLOYEE ID" />
+                <ScalarProperty Name="PROGRESS_ID" ColumnName="PROGRESS ID" />
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROGRESSES">
+            <EntityTypeMapping TypeName="ONSETDBModel.PROGRESS">
+              <MappingFragment StoreEntitySet="PROGRESSES">
+                <ScalarProperty Name="PROGRESS_ID" ColumnName="PROGRESS ID" />
+                <ScalarProperty Name="PROGRESS_DESCRIPTION" ColumnName="PROGRESS DESCRIPTION" />
+                <ScalarProperty Name="PROGRESS_PERCENTAGE" ColumnName="PROGRESS PERCENTAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROGRESSFILES">
+            <EntityTypeMapping TypeName="ONSETDBModel.PROGRESSFILE">
+              <MappingFragment StoreEntitySet="PROGRESSFILES">
+                <ScalarProperty Name="PROGRESSFILE_ID" ColumnName="PROGRESSFILE ID" />
+                <ScalarProperty Name="PROGRESS_ID" ColumnName="PROGRESS ID" />
+                <ScalarProperty Name="FILES" ColumnName="FILES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTS">
+            <EntityTypeMapping TypeName="ONSETDBModel.REPORT">
+              <MappingFragment StoreEntitySet="REPORTS">
+                <ScalarProperty Name="REPORT_ID" ColumnName="REPORT ID" />
+                <ScalarProperty Name="REPORT_BODY" ColumnName="REPORT BODY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTUSERS">
+            <EntityTypeMapping TypeName="ONSETDBModel.REPORTUSER">
+              <MappingFragment StoreEntitySet="REPORTUSERS">
+                <ScalarProperty Name="REPORTUSER_ID" ColumnName="REPORTUSER ID" />
+                <ScalarProperty Name="REPORT_ID" ColumnName="REPORT ID" />
+                <ScalarProperty Name="USER_ID_BY" ColumnName="USER ID BY" />
+                <ScalarProperty Name="USER_ID_FOR" ColumnName="USER ID FOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOMS">
+            <EntityTypeMapping TypeName="ONSETDBModel.ROOM">
+              <MappingFragment StoreEntitySet="ROOMS">
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM ID" />
+                <ScalarProperty Name="ROOM_NAME" ColumnName="ROOM NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TASKEMPLOYEES">
+            <EntityTypeMapping TypeName="ONSETDBModel.TASKEMPLOYEE">
+              <MappingFragment StoreEntitySet="TASKEMPLOYEES">
+                <ScalarProperty Name="TASKEMPLOYEE_ID" ColumnName="TASKEMPLOYEE ID" />
+                <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TASKFILES">
+            <EntityTypeMapping TypeName="ONSETDBModel.TASKFILE">
+              <MappingFragment StoreEntitySet="TASKFILES">
+                <ScalarProperty Name="TASKFILE_ID" ColumnName="TASKFILE ID" />
+                <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+                <ScalarProperty Name="FILES" ColumnName="FILES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TASKMANAGERS">
+            <EntityTypeMapping TypeName="ONSETDBModel.TASKMANAGER">
+              <MappingFragment StoreEntitySet="TASKMANAGERS">
+                <ScalarProperty Name="TASKMANAGER_ID" ColumnName="TASKMANAGER ID" />
+                <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+                <ScalarProperty Name="MANAGER_ID" ColumnName="MANAGER ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TASKPROGRESSES">
+            <EntityTypeMapping TypeName="ONSETDBModel.TASKPROGRESS">
+              <MappingFragment StoreEntitySet="TASKPROGRESSES">
+                <ScalarProperty Name="TASKPROGRESS_ID" ColumnName="TASKPROGRESS ID" />
+                <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+                <ScalarProperty Name="PROGRESS_ID" ColumnName="PROGRESS ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TASKS">
+            <EntityTypeMapping TypeName="ONSETDBModel.TASK">
+              <MappingFragment StoreEntitySet="TASKS">
+                <ScalarProperty Name="TASK_ID" ColumnName="TASK ID" />
+                <ScalarProperty Name="TASK_NAME" ColumnName="TASK NAME" />
+                <ScalarProperty Name="TASK_CATEGORY" ColumnName="TASK CATEGORY" />
+                <ScalarProperty Name="TASK_DESCRIPTION" ColumnName="TASK DESCRIPTION" />
+                <ScalarProperty Name="TASK_DEADLINE" ColumnName="TASK DEADLINE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERBIOS">
+            <EntityTypeMapping TypeName="ONSETDBModel.USERBIO">
+              <MappingFragment StoreEntitySet="USERBIOS">
+                <ScalarProperty Name="USERBIO_ID" ColumnName="USERBIO ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+                <ScalarProperty Name="USER_BIO" ColumnName="USER BIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERPICS">
+            <EntityTypeMapping TypeName="ONSETDBModel.USERPIC">
+              <MappingFragment StoreEntitySet="USERPICS">
+                <ScalarProperty Name="USERPIC_ID" ColumnName="USERPIC ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+                <ScalarProperty Name="USER_PIC" ColumnName="USER PIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="ONSETDBModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
+                <ScalarProperty Name="USER_EMAIL" ColumnName="USER EMAIL" />
+                <ScalarProperty Name="USER_PASSWORD" ColumnName="USER PASSWORD" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

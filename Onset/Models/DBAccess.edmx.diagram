@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2548f717ab0449a9947d68456c9a869e" Name="Diagram1" ZoomLevel="46">
+        <EntityTypeShape EntityType="ONSETDBModel.ADMIN" Width="1.5" PointX="6.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.CHATMESSAGE" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.CHATROOM" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.EMPLOYEE" Width="1.5" PointX="9" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.EVENT" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.EVENTUSER" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.MANAGER" Width="1.5" PointX="9" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.PROGRESSEMPLOYEE" Width="1.5" PointX="14.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.PROGRESS" Width="1.5" PointX="12" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.PROGRESSFILE" Width="1.5" PointX="14.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.REPORT" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.REPORTUSER" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.ROOM" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.TASKEMPLOYEE" Width="1.5" PointX="11.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.TASKFILE" Width="1.5" PointX="11.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.TASKMANAGER" Width="1.5" PointX="11.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.TASKPROGRESS" Width="1.5" PointX="14.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.TASK" Width="1.5" PointX="9" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.USERBIO" Width="1.5" PointX="4.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.USERPIC" Width="1.5" PointX="6.375" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONSETDBModel.USER" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="ONSETDBModel.FK__CHATMESSA__ROOM___6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__CHATMESSA__USER___6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__CHATROOMS__ROOM___656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__CHATROOMS__USER___66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__PROGRESSE__EMPLO__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__TASKEMPLO__EMPLO__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__EVENTUSER__EVENT__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__EVENTUSER__USER___59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__TASKMANAG__MANAG__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__PROGRESSE__PROGR__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__PROGRESSF__PROGR__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__TASKPROGR__PROGR__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__REPORTUSE__REPOR__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__REPORTUSE__USER___5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__REPORTUSE__USER___60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__TASKEMPLO__TASK___3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__TASKFILES__TASK___440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__TASKMANAG__TASK___38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__TASKPROGR__TASK___48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__USERBIOS__USER_I__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="ONSETDBModel.FK__USERPICS__USER_I__33D4B598" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

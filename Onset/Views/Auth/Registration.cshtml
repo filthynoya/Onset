@@ -1,0 +1,106 @@
+﻿@model Onset.Models.FormModel.RegistrationForm
+
+@{
+    Layout = null;
+    var error = ViewBag.Error;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/registration")
+</head>
+
+<body>
+    <div class="login-dark">
+        <form method="post">
+            <div class="form-group">
+                <div class="d-flex flex-row">
+                    @Html.EditorFor(model => model.FIRSTNAME, new { htmlAttributes = new { @class = "form-control me-5", @placeholder = "First Name" } })
+                    @Html.EditorFor(model => model.LASTNAME, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name" } })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(model => model.FIRSTNAME, "", new { @class = "text-danger" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(model => model.LASTNAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
+                @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.CONFIRMPASSWORD, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password" } })
+                @Html.ValidationMessageFor(model => model.CONFIRMPASSWORD, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="d-flex flex-row">
+                    @Html.EditorFor(model => model.ORGANIZATION, new { htmlAttributes = new { @class = "form-control me-5", @placeholder = "Organization" } })
+                    @Html.EditorFor(model => model.DESIGNATION, new { htmlAttributes = new { @class = "form-control", @placeholder = "Designation" } })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(model => model.ORGANIZATION, "", new { @class = "text-danger" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(model => model.DESIGNATION, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone" } })
+                @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="d-flex justify-content-between">
+                    <div class="radio-group ps-3">
+                        <label>Male</label>
+                        @Html.RadioButtonFor(m => m.GENDER, "Male", new { @class = "form-check-input me-2", @checked = "" })
+                        <label>Female</label>
+                        @Html.RadioButtonFor(m => m.GENDER, "Female", new { @class = "form-check-input" })
+                    </div>
+                    <div class="radio-group pe-3">
+                        <label>Employee</label>
+                        @Html.RadioButtonFor(m => m.USERTYPE, "Employee", new { @class = "form-check-input", @checked = "" })
+                        <label class="ms-2">Manager</label>
+                        @Html.RadioButtonFor(m => m.USERTYPE, "Manager", new { @class = "form-check-input" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.DATEOFBIRTH, new { htmlAttributes = new { @class = "textbox-n form-control", @placeholder = "Date of Birth", @type = "text", @onblur = "(this.type='text')", @onfocus = "(this.type='date')" } })
+                @Html.ValidationMessageFor(model => model.DATEOFBIRTH, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.LOCATION, new { htmlAttributes = new { @class = "form-control", @placeholder = "Location" } })
+                @Html.ValidationMessageFor(model => model.LOCATION, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @if (error != null)
+                {
+                    <span class="text-danger">@error</span>
+                }
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block submit-cls" type="submit">Sign Up</button>
+            </div>
+            @Html.ActionLink("Log In", "Login", null, new { @class = "forgot" })
+        </form>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
